@@ -1,0 +1,554 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<image_manifest version="1.0" paper="Crenwelge-Muster-1969"
+                stage="1"
+                title="Free Vibrations of Ring- and Stringer-Stiffened Conical Shells"
+                journal_hint="J. Acoust. Soc. Am., Vol. 46, No. 1 (Part 2), 1969 (page 176 visible on IMG-002)"
+                received_hint="Received 6 January 1969 (visible on IMG-001)">
+
+  <!--
+    SCOPE OF THIS FILE (Stage 1 only):
+    - Per-image cataloguing of WHAT is on each page (headings, equation/table/figure
+      numbers, content type, readability, continuation, defects).
+    - NO equation transcription, NO theory interpretation, NO long text transcription.
+    - Notation register was consulted only for symbol-awareness, NOT for extraction.
+    - Every image is traced by image_id + batch_id; original filenames are recorded
+      but NOT used for ordering. Apparent paper order is recorded separately.
+    - Visible equation numbers are read off the page margins only; their CONTENT is
+      deferred to Stage 2.
+  -->
+
+  <manifest_summary>
+    <total_images>31</total_images>
+    <total_images_note>
+      30 original images (IMG-001..IMG-030) + 1 user-supplied insertion (IMG-026B) added in
+      revision r2 to supply the previously-missing Appendix Eq. (A4)/H_4. Original numbering and
+      batch structure are UNCHANGED; the insertion uses a suffixed ID so no downstream ID is shifted.
+    </total_images_note>
+    <revision>r2 (2026-06-09): inserted IMG-026B (Appendix Eq. A4 / H_4) between IMG-026 and IMG-027; resolved flag MF-001.</revision>
+    <batches>A,B,C,D,E,F (IMG-026B belongs to batch F)</batches>
+    <images_per_batch>5 (batch F now holds 6: IMG-026, IMG-026B, IMG-027, IMG-028, IMG-029, IMG-030)</images_per_batch>
+    <all_images_present>true</all_images_present>
+    <apparent_document_order>
+      IMG-001..IMG-030 appear to be in natural paper reading order:
+      front matter (title/abstract, symbol list, introduction),
+      Section I Theory (Eqs 1-33, Figs 1-3),
+      Section II Experimental (Tables I-II, Fig 4),
+      Section III Results (Figs 5,7,9,11,12 + discussion),
+      Appendix A (Eqs A1-A12, IN1-IN16 definitions).
+    </apparent_document_order>
+    <visible_equation_range>Eq. (1) through Eq. (33); Appendix Eqs (A1)-(A12). Eq. (A4) now supplied via inserted IMG-026B (no gap remains).</visible_equation_range>
+    <visible_tables>Table I (Shell dimensions), Table II (Shell material properties)</visible_tables>
+    <visible_figures>Fig. 1, Fig. 2, Fig. 3, Fig. 4, Fig. 5, Fig. 7, Fig. 9, Fig. 11, Fig. 12</visible_figures>
+    <manifest_level_flags>
+      <flag id="MF-001" severity="HIGH" type="MISSING_REGION" status="RESOLVED" resolved_in="r2">
+        ORIGINAL ISSUE: Appendix equation (A4) / coefficient H_4 was MISSING from the image set.
+        IMG-026 ended at Eq. (A3) (H_3); IMG-027 began at Eq. (A5) (H_5, confirmed by
+        zoom of the left margin showing "H_5 = D_w pi sin a (IN13...").
+        RESOLUTION (r2): The user supplied the missing screenshot, now catalogued as IMG-026B,
+        inserted between IMG-026 and IMG-027. IMG-026B contains Eq. (A4)/H_4 AND also repeats
+        Eq. (A5)/H_5 (which independently appears on IMG-027) - the (A5) overlap provides a
+        cross-check seam between the inserted image and the existing sequence. The (A4) gap is
+        closed. Downstream: treat (A4)/H_4 as canonical from IMG-026B; treat (A5)/H_5 as a
+        duplicate that appears on BOTH IMG-026B and IMG-027 (Stage 3 should confirm they agree).
+      </flag>
+      <flag id="MF-002" severity="MEDIUM" type="MISSING_FIGURES">
+        Figures 6, 8, and 10 are referenced in the results text (e.g., IMG-024 mentions
+        "Figs. 8 and 10") but are NOT present among the 30 supplied images. These are
+        understood from captions of present figures to be the equivalent-orthotropic-shell
+        comparison plots for Shells 1, 2, 3. Their absence is a gap in the image set, not
+        necessarily a paper defect. Flagged so Stage 2 does not assume they were extracted.
+      </flag>
+      <flag id="MF-003" severity="LOW" type="OCR_SUSPECT">
+        Several Appendix denominators/exponents are small and may be mis-read at this
+        resolution (e.g., possible "km^4" vs "k_m^4" rendering in IN4/IN10 on IMG-029).
+        These are NOT classified here; they are left for Stage 2 transcription and Stage 3
+        audit. Listed only as a readability caution.
+      </flag>
+    </manifest_level_flags>
+  </manifest_summary>
+
+  <!-- ===================== BATCH A ===================== -->
+  <image image_id="IMG-001" batch_id="A" original_filename="IMG-00 (1).png">
+    <apparent_paper_order>1</apparent_paper_order>
+    <apparent_page>title page (page number not clearly visible; "Received 6 January 1969" and codes 12.7,12.3 at top)</apparent_page>
+    <section_heading>Title block + Abstract (untitled abstract paragraph)</section_heading>
+    <equation_numbers_visible>none</equation_numbers_visible>
+    <table_numbers_visible>none</table_numbers_visible>
+    <figure_numbers_visible>none</figure_numbers_visible>
+    <content_type>title / authors / affiliation / abstract</content_type>
+    <readability>CLEAR</readability>
+    <continuation_status>standalone (document start); continues next</continuation_status>
+    <defect_notes>Abstract has highlighter marking over some sentences; text still legible. Small font for affiliation.</defect_notes>
+    <rescan_needed>false</rescan_needed>
+  </image>
+
+  <image image_id="IMG-002" batch_id="A" original_filename="IMG-00 (2).png">
+    <apparent_paper_order>2</apparent_paper_order>
+    <apparent_page>176 (footer: "176  Volume 46  Number 1 (Part 2)  1969")</apparent_page>
+    <section_heading>LIST OF SYMBOLS</section_heading>
+    <equation_numbers_visible>none</equation_numbers_visible>
+    <table_numbers_visible>none</table_numbers_visible>
+    <figure_numbers_visible>none</figure_numbers_visible>
+    <content_type>symbol/notation definition list (two columns)</content_type>
+    <readability>CLEAR</readability>
+    <continuation_status>continues next (symbol list runs onto IMG-003)</continuation_status>
+    <defect_notes>Dense two-column symbol list; small italic subscripts. Useful for cross-check against notation_register.md but not to be extracted as theory in Stage 1.</defect_notes>
+    <rescan_needed>false</rescan_needed>
+  </image>
+
+  <image image_id="IMG-003" batch_id="A" original_filename="IMG-00 (3).png">
+    <apparent_paper_order>3</apparent_paper_order>
+    <apparent_page>176 (continuation of symbol list)</apparent_page>
+    <section_heading>LIST OF SYMBOLS (continued) + "Subscripts" sub-block</section_heading>
+    <equation_numbers_visible>none</equation_numbers_visible>
+    <table_numbers_visible>none</table_numbers_visible>
+    <figure_numbers_visible>none</figure_numbers_visible>
+    <content_type>symbol list tail (nu_w, sigma, chi, omega) + subscript key (w,r,st / s,theta,s-theta)</content_type>
+    <readability>CLEAR</readability>
+    <continuation_status>continues previous (tail of IMG-002 symbol list)</continuation_status>
+    <defect_notes>Large amount of whitespace; only a few rows of content. No defects.</defect_notes>
+    <rescan_needed>false</rescan_needed>
+  </image>
+
+  <image image_id="IMG-004" batch_id="A" original_filename="IMG-00 (4).png">
+    <apparent_paper_order>4</apparent_paper_order>
+    <apparent_page>introduction (page number not visible)</apparent_page>
+    <section_heading>INTRODUCTION</section_heading>
+    <equation_numbers_visible>none</equation_numbers_visible>
+    <table_numbers_visible>none</table_numbers_visible>
+    <figure_numbers_visible>none</figure_numbers_visible>
+    <content_type>narrative prose (literature background, motivation)</content_type>
+    <readability>CLEAR</readability>
+    <continuation_status>standalone (intro start); continues next</continuation_status>
+    <defect_notes>Single-column body text. Contains reference superscripts. No defects.</defect_notes>
+    <rescan_needed>false</rescan_needed>
+  </image>
+
+  <image image_id="IMG-005" batch_id="A" original_filename="IMG-00 (5).png">
+    <apparent_paper_order>5</apparent_paper_order>
+    <apparent_page>introduction (continuation)</apparent_page>
+    <section_heading>INTRODUCTION (continued)</section_heading>
+    <equation_numbers_visible>none</equation_numbers_visible>
+    <table_numbers_visible>none</table_numbers_visible>
+    <figure_numbers_visible>none</figure_numbers_visible>
+    <content_type>narrative prose (scope/method overview of the present study)</content_type>
+    <readability>CLEAR</readability>
+    <continuation_status>continues previous (tail of introduction)</continuation_status>
+    <defect_notes>Body text only. No defects.</defect_notes>
+    <rescan_needed>false</rescan_needed>
+  </image>
+
+  <!-- ===================== BATCH B ===================== -->
+  <image image_id="IMG-006" batch_id="B" original_filename="IMG-00 (6).png">
+    <apparent_paper_order>6</apparent_paper_order>
+    <apparent_page>start of Theory section</apparent_page>
+    <section_heading>I. THEORY</section_heading>
+    <equation_numbers_visible>(1),(2),(3),(4),(5),(6),(7),(8),(9)</equation_numbers_visible>
+    <table_numbers_visible>none</table_numbers_visible>
+    <figure_numbers_visible>references Fig. 1 in text (figure itself not on this image)</figure_numbers_visible>
+    <content_type>theory equations (wall strains, membrane strains, curvature changes) + framing text</content_type>
+    <readability>CLEAR</readability>
+    <continuation_status>standalone section start; continues next</continuation_status>
+    <defect_notes>Equations well printed. Some highlighter on words ("strains", "distance z", "extensional strains", "circumferential"). Numerator/denominator stacks in Eqs (6),(8),(9) are small - flag for careful Stage 2 transcription.</defect_notes>
+    <rescan_needed>false</rescan_needed>
+  </image>
+
+  <image image_id="IMG-007" batch_id="B" original_filename="IMG-00 (7).png">
+    <apparent_paper_order>7</apparent_paper_order>
+    <apparent_page>Theory (continued)</apparent_page>
+    <section_heading>I. THEORY (continued)</section_heading>
+    <equation_numbers_visible>(10),(11),(12)</equation_numbers_visible>
+    <table_numbers_visible>none</table_numbers_visible>
+    <figure_numbers_visible>references Fig. 2 in text (figure not on this image)</figure_numbers_visible>
+    <content_type>theory text (curvature/displacement conventions, linear shell theory assumption, thin-stiffener assumption) + ring/stringer strain equations</content_type>
+    <readability>CLEAR (verified via 2.2x upscale; equation numbers and ring/stringer strain forms confirmed)</readability>
+    <continuation_status>continues previous and next</continuation_status>
+    <defect_notes>Original render slightly soft; upscaled copy stored at logs/_tmp_zoom/B7_full.png for Stage-1 reading aid. Highlighter on several phrases.</defect_notes>
+    <rescan_needed>false</rescan_needed>
+  </image>
+
+  <image image_id="IMG-008" batch_id="B" original_filename="IMG-00 (8).png">
+    <apparent_paper_order>8</apparent_paper_order>
+    <apparent_page>Theory (continued)</apparent_page>
+    <section_heading>I. THEORY (continued)</section_heading>
+    <equation_numbers_visible>(13)</equation_numbers_visible>
+    <table_numbers_visible>none</table_numbers_visible>
+    <figure_numbers_visible>none</figure_numbers_visible>
+    <content_type>stringer twist equation (13) + theory text introducing equivalent-orthotropic vs general approaches</content_type>
+    <readability>PARTIAL (Eq. 13 top line has small stacked fractions and subscripts; surrounding text legible but compressed)</readability>
+    <continuation_status>continues previous and next</continuation_status>
+    <defect_notes>Top equation (13) is the most cramped on the page; recommend Stage 2 transcribe at high zoom. Highlighter present.</defect_notes>
+    <rescan_needed>false</rescan_needed>
+  </image>
+
+  <image image_id="IMG-009" batch_id="B" original_filename="IMG-00 (9).png">
+    <apparent_paper_order>9</apparent_paper_order>
+    <apparent_page>Theory (continued) + Fig. 1 placement</apparent_page>
+    <section_heading>I. THEORY (continued)</section_heading>
+    <equation_numbers_visible>(14),(15)</equation_numbers_visible>
+    <table_numbers_visible>none</table_numbers_visible>
+    <figure_numbers_visible>Fig. 1 (caption: "Thin truncated conical shell - geometry and coordinate system")</figure_numbers_visible>
+    <content_type>strain-energy expression Eq (14) (equivalent-orthotropic approach), rigidity definitions Eq (15), and Fig. 1 line diagram (bottom-left) with reference footnotes</content_type>
+    <readability>CLEAR for equations; Fig. 1 line art CLEAR but small; footnote citations small</readability>
+    <continuation_status>continues previous and next</continuation_status>
+    <defect_notes>Eq (15) is a tall braced list of rigidity definitions (D_w, D_r, D_st, S_r, S_st, K_w, K_r, K_st, T_r, T_st) - small type, Stage 2 to transcribe carefully. Fig. 1 shares the page (lower-left) with text.</defect_notes>
+    <rescan_needed>false</rescan_needed>
+  </image>
+
+  <image image_id="IMG-010" batch_id="B" original_filename="IMG-00 (10).png">
+    <apparent_paper_order>10</apparent_paper_order>
+    <apparent_page>Theory (continued)</apparent_page>
+    <section_heading>I. THEORY (continued)</section_heading>
+    <equation_numbers_visible>(16)</equation_numbers_visible>
+    <table_numbers_visible>none</table_numbers_visible>
+    <figure_numbers_visible>none</figure_numbers_visible>
+    <content_type>unnumbered relation b_st = s*beta*cos(alpha) at top; strain-energy expression Eq (16) for the general reinforced-shell approach (double-integral wall term + sum over P rings + sum over Q stringers)</content_type>
+    <readability>CLEAR (large multi-line equation, well printed)</readability>
+    <continuation_status>continues previous and next</continuation_status>
+    <defect_notes>Eq (16) spans several lines with summation limits P and Q and subscripted brackets ]_r and ]_st - Stage 2 must preserve grouping and limits. Highlighter on one word.</defect_notes>
+    <rescan_needed>false</rescan_needed>
+  </image>
+
+  <!-- ===================== BATCH C ===================== -->
+  <image image_id="IMG-011" batch_id="C" original_filename="IMG-00 (11).png">
+    <apparent_paper_order>11</apparent_paper_order>
+    <apparent_page>Theory (continued)</apparent_page>
+    <section_heading>I. THEORY (continued)</section_heading>
+    <equation_numbers_visible>(17),(18),(19),(20),(21)</equation_numbers_visible>
+    <table_numbers_visible>none</table_numbers_visible>
+    <figure_numbers_visible>none</figure_numbers_visible>
+    <content_type>rigidity definitions Eq (17) (general approach: D_r,D_st,S_r,S_st,K_r,K_st,T_r,T_st), kinetic energy Eq (18) (equivalent orthotropic), mass terms Eq (19), kinetic energy Eq (20) (general), mass terms Eq (21)</content_type>
+    <readability>CLEAR (single column, equations legible; subscripts small)</readability>
+    <continuation_status>continues previous and next</continuation_status>
+    <defect_notes>Five numbered equations on one page; Eq (17) is a braced definition list. Highlighter on "kinetic energy". Dense but legible.</defect_notes>
+    <rescan_needed>false</rescan_needed>
+  </image>
+
+  <image image_id="IMG-012" batch_id="C" original_filename="IMG-00 (12).png">
+    <apparent_paper_order>12</apparent_paper_order>
+    <apparent_page>Theory (continued) + Fig. 2 placement</apparent_page>
+    <section_heading>I. THEORY (continued)</section_heading>
+    <equation_numbers_visible>(22),(23),(24),(25),(26),(27)</equation_numbers_visible>
+    <table_numbers_visible>none</table_numbers_visible>
+    <figure_numbers_visible>Fig. 2 (caption: "Element of reinforced conical shell"; labels STRINGER, THIN WALL, RING)</figure_numbers_visible>
+    <content_type>boundary conditions Eq (22) (simply supported ends), trial displacement functions Eqs (23)-(25) (u,v,w after Grigolyuk), wavenumber Eq (26), harmonic time dependence Eq (27); Fig. 2 isometric line drawing at bottom</content_type>
+    <readability>CLEAR for equations and figure labels</readability>
+    <continuation_status>continues previous; continues next</continuation_status>
+    <defect_notes>Eqs (23)-(25) carry the "s^2 sin k_m(s-s1)" amplitude form - note for Stage 2 the s^2 factor and direction labels. Highlighter on several phrases (simply supported, radial direction, m/n definitions). Fig. 2 shares page.</defect_notes>
+    <rescan_needed>false</rescan_needed>
+  </image>
+
+  <image image_id="IMG-013" batch_id="C" original_filename="IMG-00 (13).png">
+    <apparent_paper_order>13</apparent_paper_order>
+    <apparent_page>figure page (Fig. 3)</apparent_page>
+    <section_heading>none (figure only)</section_heading>
+    <equation_numbers_visible>none (unnumbered geometric relation M=(s2-s1) appears as a dimension label)</equation_numbers_visible>
+    <table_numbers_visible>none</table_numbers_visible>
+    <figure_numbers_visible>Fig. 3 (caption: "Experimental configurations")</figure_numbers_visible>
+    <content_type>engineering drawing: cross-section sketch (labels m, w, h, k, beta), elevation with d, D, b_r/2, b_r, M=(s2-s1), section A-A, and assembly callouts (1/4 in. aluminum end plate, adjustable nuts, 1/2 in. threaded steel rod 20 threads/in.)</content_type>
+    <readability>PARTIAL (line drawing clear; small dimension labels m,w,h,k near the cross-section are tiny and relevant to notation conflicts NC005/NC006 - read with care in Stage 2)</readability>
+    <continuation_status>standalone figure</continuation_status>
+    <defect_notes>Wide landscape figure with whitespace. Small section labels (A, w-like, h, k) are exactly the symbols flagged in the notation conflict ledger - mark any unclear ones as ambiguous in Stage 2, do not guess.</defect_notes>
+    <rescan_needed>false (legible, but Stage 2 should zoom the cross-section labels)</rescan_needed>
+  </image>
+
+  <image image_id="IMG-014" batch_id="C" original_filename="IMG-00 (14).png">
+    <apparent_paper_order>14</apparent_paper_order>
+    <apparent_page>Theory (eigenvalue formulation)</apparent_page>
+    <section_heading>I. THEORY (continued)</section_heading>
+    <equation_numbers_visible>(28),(29),(30)</equation_numbers_visible>
+    <table_numbers_visible>none</table_numbers_visible>
+    <figure_numbers_visible>none</figure_numbers_visible>
+    <content_type>3x3 frequency matrix eigenvalue equation Eq (28) (H_1..H_9, symmetric, times {u_mn,v_mn,w_mn} = 0), characteristic cubic Eq (29) (A_3 X^3 - A_2 X^2 + A_1 X - A_0 = 0), coefficient definitions Eq (30) (A_0,A_1,A_2,A_3), with X = omega^2 = (2 pi f)^2; text "the H_i are given in the Appendix"</content_type>
+    <readability>PARTIAL (matrix and cubic-coefficient subscripts are small; the 3x3 matrix entries and the A_i definitions need high-zoom transcription in Stage 2; sign pattern of Eq (29) must be preserved exactly)</readability>
+    <continuation_status>continues previous and next</continuation_status>
+    <defect_notes>Critical equations for the eigenproblem. Sign convention of the cubic (alternating signs) and the (2*pi*f)^2 grouping are audit-sensitive. Highlighter on a phrase about "combination of m and n".</defect_notes>
+    <rescan_needed>false (but Stage 2 should zoom Eqs 28-30)</rescan_needed>
+  </image>
+
+  <image image_id="IMG-015" batch_id="C" original_filename="IMG-00 (15).png">
+    <apparent_paper_order>15</apparent_paper_order>
+    <apparent_page>Theory (mode-ratio solution)</apparent_page>
+    <section_heading>I. THEORY (continued)</section_heading>
+    <equation_numbers_visible>(31),(32),(33)</equation_numbers_visible>
+    <table_numbers_visible>none</table_numbers_visible>
+    <figure_numbers_visible>none</figure_numbers_visible>
+    <content_type>generalized-displacement (mode ratio) solutions: Eq (31) u_mn in terms of v_mn,w_mn; Eq (32) v_mn in terms of w_mn; Eq (33) normalization w_mn = 1.0</content_type>
+    <readability>CLEAR (large, well-spaced equations)</readability>
+    <continuation_status>continues previous (closes the theory derivation)</continuation_status>
+    <defect_notes>Eq (32) has nested brackets and omega^2 H_7/H_9 terms - preserve grouping in Stage 2. No image defects.</defect_notes>
+    <rescan_needed>false</rescan_needed>
+  </image>
+
+  <!-- ===================== BATCH D ===================== -->
+  <image image_id="IMG-016" batch_id="D" original_filename="IMG-00 (16).png">
+    <apparent_paper_order>16</apparent_paper_order>
+    <apparent_page>start of Experimental section</apparent_page>
+    <section_heading>II. EXPERIMENTAL INVESTIGATIONS</section_heading>
+    <equation_numbers_visible>none</equation_numbers_visible>
+    <table_numbers_visible>references Tables I and II in text</table_numbers_visible>
+    <figure_numbers_visible>references Fig. 3 in text</figure_numbers_visible>
+    <content_type>narrative: description of three test shells (Shell 1: three rings; Shell 2: three rings + three stringers; Shell 3: three rings + six stringers), fabrication (6061 aluminum), test setup</content_type>
+    <readability>CLEAR</readability>
+    <continuation_status>standalone section start; continues next</continuation_status>
+    <defect_notes>Numbered list of shell configurations highlighted. Body text legible.</defect_notes>
+    <rescan_needed>false</rescan_needed>
+  </image>
+
+  <image image_id="IMG-017" batch_id="D" original_filename="IMG-00 (17).png">
+    <apparent_paper_order>17</apparent_paper_order>
+    <apparent_page>table page</apparent_page>
+    <section_heading>none (table only)</section_heading>
+    <equation_numbers_visible>none</equation_numbers_visible>
+    <table_numbers_visible>Table I (caption: "Shell dimensions")</table_numbers_visible>
+    <figure_numbers_visible>none</figure_numbers_visible>
+    <content_type>data table: rows D, d, M, alpha, t_w, P, b_r, j, h, Q, beta, m, k for Shell No. 1/2/3</content_type>
+    <readability>CLEAR (clean typeset table, all numeric values legible)</readability>
+    <continuation_status>standalone table</continuation_status>
+    <defect_notes>Table I uses symbols m, j, k, h as GEOMETRIC dimensions - these collide with modal m, imaginary j, etc. (notation conflicts NC002/NC007). Record values verbatim in Stage 2; do not reconcile with modal symbols.</defect_notes>
+    <rescan_needed>false</rescan_needed>
+  </image>
+
+  <image image_id="IMG-018" batch_id="D" original_filename="IMG-00 (18).png">
+    <apparent_paper_order>18</apparent_paper_order>
+    <apparent_page>table page</apparent_page>
+    <section_heading>none (table only)</section_heading>
+    <equation_numbers_visible>none</equation_numbers_visible>
+    <table_numbers_visible>Table II (caption: "Shell material properties")</table_numbers_visible>
+    <figure_numbers_visible>none</figure_numbers_visible>
+    <content_type>data table: shell wall (6061 Al), rings (6061 Al), stringers (2024 Al) with E, nu/G, gamma values</content_type>
+    <readability>CLEAR</readability>
+    <continuation_status>standalone table</continuation_status>
+    <defect_notes>Three-column property table; values match notation_register Table II references. No defects.</defect_notes>
+    <rescan_needed>false</rescan_needed>
+  </image>
+
+  <image image_id="IMG-019" batch_id="D" original_filename="IMG-00 (19).png">
+    <apparent_paper_order>19</apparent_paper_order>
+    <apparent_page>end of Experimental / start of Results</apparent_page>
+    <section_heading>II. EXPERIMENTAL (tail) + III. RESULTS AND DISCUSSION (heading)</section_heading>
+    <equation_numbers_visible>none</equation_numbers_visible>
+    <table_numbers_visible>none</table_numbers_visible>
+    <figure_numbers_visible>references figures in text (e.g., Fig. 5-class comparisons)</figure_numbers_visible>
+    <content_type>narrative: end of test-procedure description, then Results-and-Discussion opening prose (natural-frequency determination, n ranges)</content_type>
+    <readability>CLEAR</readability>
+    <continuation_status>continues previous; continues next</continuation_status>
+    <defect_notes>Section boundary occurs mid-page (II ends, III begins). Body text legible.</defect_notes>
+    <rescan_needed>false</rescan_needed>
+  </image>
+
+  <image image_id="IMG-020" batch_id="D" original_filename="IMG-00 (20).png">
+    <apparent_paper_order>20</apparent_paper_order>
+    <apparent_page>figure page (photograph)</apparent_page>
+    <section_heading>none (figure only)</section_heading>
+    <equation_numbers_visible>none</equation_numbers_visible>
+    <table_numbers_visible>none</table_numbers_visible>
+    <figure_numbers_visible>Fig. 4 (caption: "Conical shell reinforced with three rings and six stringers")</figure_numbers_visible>
+    <content_type>photograph of an instrumented test shell (Shell 3) on the test fixture</content_type>
+    <readability>PARTIAL (halftone photograph; caption legible, but photographic detail is low-contrast / dark)</readability>
+    <continuation_status>standalone figure</continuation_status>
+    <defect_notes>Photograph carries no theory data; included for completeness. Caption confirmed. No rescan needed for theory purposes.</defect_notes>
+    <rescan_needed>false</rescan_needed>
+  </image>
+
+  <!-- ===================== BATCH E ===================== -->
+  <image image_id="IMG-021" batch_id="E" original_filename="IMG-00 (21).png">
+    <apparent_paper_order>21</apparent_paper_order>
+    <apparent_page>Results (figure + text)</apparent_page>
+    <section_heading>III. RESULTS AND DISCUSSION (continued)</section_heading>
+    <equation_numbers_visible>none</equation_numbers_visible>
+    <table_numbers_visible>none</table_numbers_visible>
+    <figure_numbers_visible>Fig. 5 (caption: "Comparison of theory (general reinforced shell) with experiment (Shell No. 1)")</figure_numbers_visible>
+    <content_type>x-y plot: Frequency (kHz) vs Number of Circumferential Waves n; legend keyed by number of meridional half-waves (theory vs experiment markers); plus discussion prose</content_type>
+    <readability>PARTIAL (axis labels, legend and caption CLEAR; individual plotted data-point values are not precisely readable - this is a graph, not a numeric table)</readability>
+    <continuation_status>continues previous; continues next</continuation_status>
+    <defect_notes>Figure values must NOT be digitized/estimated in Phase 1 (CSV/data comparison forbidden). Record only labels and what the curves represent.</defect_notes>
+    <rescan_needed>false</rescan_needed>
+  </image>
+
+  <image image_id="IMG-022" batch_id="E" original_filename="IMG-00 (22).png">
+    <apparent_paper_order>22</apparent_paper_order>
+    <apparent_page>Results (two figures + text)</apparent_page>
+    <section_heading>III. RESULTS AND DISCUSSION (continued)</section_heading>
+    <equation_numbers_visible>none</equation_numbers_visible>
+    <table_numbers_visible>none</table_numbers_visible>
+    <figure_numbers_visible>Fig. 7 (left; "Comparison of theory (general reinforced shell) with experiment (Shell No. 2)") and Fig. 9 (right; "...with experiment (Shell No. 3)") - both captions confirmed by zoom</figure_numbers_visible>
+    <content_type>two x-y comparison plots (Shell 2 and Shell 3) side by side, each Frequency vs n; surrounding discussion prose</content_type>
+    <readability>PARTIAL (captions/axes CLEAR after zoom; data-point values not precisely readable)</readability>
+    <continuation_status>continues previous; continues next</continuation_status>
+    <defect_notes>This single image holds TWO figures (Fig. 7 and Fig. 9). Note that Figs 6 and 8 (equivalent-orthotropic comparisons for Shells 1 and 2) are NOT present in the image set - see manifest flag MF-002. Do not digitize plot data in Phase 1.</defect_notes>
+    <rescan_needed>false</rescan_needed>
+  </image>
+
+  <image image_id="IMG-023" batch_id="E" original_filename="IMG-00 (23).png">
+    <apparent_paper_order>23</apparent_paper_order>
+    <apparent_page>figure page (nodal map)</apparent_page>
+    <section_heading>none (figure only)</section_heading>
+    <equation_numbers_visible>none</equation_numbers_visible>
+    <table_numbers_visible>none</table_numbers_visible>
+    <figure_numbers_visible>Fig. 11 (caption: "Example of nodal pattern for mode of vibration")</figure_numbers_visible>
+    <content_type>developed (fan/sector) nodal map: node lines (dashed), X = shaker location, r = ring, st = stringer; annotated Shell 1, m = 1 or 2, n = 7 or 6, f = 3514 cps; axes in inches and degrees</content_type>
+    <readability>PARTIAL (overall figure CLEAR; small embedded labels n=..., m=..., and grid annotations are tiny)</readability>
+    <continuation_status>standalone figure</continuation_status>
+    <defect_notes>Marker "X" here is the SHAKER location, NOT eigenvalue X (notation conflict NC004). Preserve that meaning. Numeric f and mode labels are figure annotations only.</defect_notes>
+    <rescan_needed>false</rescan_needed>
+  </image>
+
+  <image image_id="IMG-024" batch_id="E" original_filename="IMG-00 (24).png">
+    <apparent_paper_order>24</apparent_paper_order>
+    <apparent_page>Results (text, two columns)</apparent_page>
+    <section_heading>III. RESULTS AND DISCUSSION (continued)</section_heading>
+    <equation_numbers_visible>none</equation_numbers_visible>
+    <table_numbers_visible>none</table_numbers_visible>
+    <figure_numbers_visible>references Figs. 7, 8, 9, 10, 11, 12 in text</figure_numbers_visible>
+    <content_type>narrative discussion: nodal-pattern interpretation, equivalent-orthotropic theory shown inadequate (Figs 8 &amp; 10), double natural frequencies at n = 3,6,9, interference between modes, Weingarten comparison</content_type>
+    <readability>CLEAR (two-column body text)</readability>
+    <continuation_status>continues previous; continues next</continuation_status>
+    <defect_notes>Text references Figs 6/8/10 which are absent from the image set (flag MF-002). Theory-relevant qualitative statements (which approach fails, where double roots occur) should be captured by Stage 2 as modeling-relevant text.</defect_notes>
+    <rescan_needed>false</rescan_needed>
+  </image>
+
+  <image image_id="IMG-025" batch_id="E" original_filename="IMG-00 (25).png">
+    <apparent_paper_order>25</apparent_paper_order>
+    <apparent_page>figure page (nodal map)</apparent_page>
+    <section_heading>none (figure only)</section_heading>
+    <equation_numbers_visible>none</equation_numbers_visible>
+    <table_numbers_visible>none</table_numbers_visible>
+    <figure_numbers_visible>Fig. 12 (caption: "Example of nodal pattern for mode of vibration")</figure_numbers_visible>
+    <content_type>developed (fan/sector) nodal map: node lines (dashed), X = shaker location, r = ring, st = stringer; annotated Shell 3, m = 1, n = 9, f = 5090 cps; "response" arrows; axes in inches and degrees</content_type>
+    <readability>PARTIAL (figure CLEAR; small embedded annotations tiny)</readability>
+    <continuation_status>standalone figure</continuation_status>
+    <defect_notes>Same X = shaker-location caveat as Fig. 11 (NC004). Figure annotations only; no theory equations.</defect_notes>
+    <rescan_needed>false</rescan_needed>
+  </image>
+
+  <!-- ===================== BATCH F ===================== -->
+  <image image_id="IMG-026" batch_id="F" original_filename="IMG-00 (26).png">
+    <apparent_paper_order>26</apparent_paper_order>
+    <apparent_page>start of Appendix A</apparent_page>
+    <section_heading>Appendix A. Components in the Frequency Matrix of Eq. 28</section_heading>
+    <equation_numbers_visible>(A1),(A2),(A3)</equation_numbers_visible>
+    <table_numbers_visible>none</table_numbers_visible>
+    <figure_numbers_visible>none</figure_numbers_visible>
+    <content_type>appendix equations: H_1 (A1), H_2 (A2), H_3 (A3) expressed via IN1..IN16 shorthand, with D_w,S_w,K_w,T_w and starred variants, k_m, sin/cos alpha factors</content_type>
+    <readability>PARTIAL (long multi-line expressions; many small superscripts/subscripts and starred IN* terms - high-zoom transcription required in Stage 2)</readability>
+    <continuation_status>section start; continues next</continuation_status>
+    <defect_notes>Wide landscape equations. THIS PAGE ENDS AT (A3). The (A4)/H_4 that follows is now supplied by inserted IMG-026B (MF-001 RESOLVED in r2); IMG-027 resumes at (A5). Heavy use of IN* (starred) shorthand whose definitions appear on IMG-029/030.</defect_notes>
+    <rescan_needed>false</rescan_needed>
+  </image>
+
+  <image image_id="IMG-026B" batch_id="F" original_filename="(user-supplied in r2; see source_note for required on-disk filename)">
+    <apparent_paper_order>26.5 (logically between IMG-026 and IMG-027 in the Appendix A sequence)</apparent_paper_order>
+    <apparent_page>Appendix A (the page/region carrying H_4 and the top of H_5)</apparent_page>
+    <section_heading>Appendix A (continued) - Components in the Frequency Matrix of Eq. 28</section_heading>
+    <equation_numbers_visible>(A4) and (A5)</equation_numbers_visible>
+    <table_numbers_visible>none</table_numbers_visible>
+    <figure_numbers_visible>none</figure_numbers_visible>
+    <content_type>
+      appendix equations: H_4 (A4) - the previously-missing coefficient - and H_5 (A5).
+      H_4 (A4): D_w,D_r*,D_st*,nu_w D_w terms with cos alpha factors, bracketed
+      [4(IN2)-4 k_m(IN14)+k_m^2(IN10)] and [4(IN1)-4 k_m(IN13)+k_m^2(IN9)](IN*16) groups,
+      plus a (1-nu_w)/2 * D_w * pi/cos alpha * (IN2) * n^2 term.
+      H_5 (A5): D_w,D_r*,nu_w D_w sin alpha terms, an S_r* cos alpha bracket containing
+      (IN*12)(2 - n^2/cos^2 alpha)+k_m(IN*2), and an S_st* cos alpha braced group
+      {4(IN11)+k_m[8(IN1)-2(IN7)]-6 k_m^2(IN13)+k_m^3(IN9)}(IN*15).
+    </content_type>
+    <readability>CLEAR (user-supplied crop is high-contrast; equation numbers (A4) and (A5), starred IN* terms, exponents and denominators are legible)</readability>
+    <continuation_status>
+      INSERTED: continues IMG-026 (which ends at A3) and precedes IMG-027 (which starts at A5).
+      Overlaps IMG-027 by one equation: (A5)/H_5 appears on BOTH IMG-026B and IMG-027.
+    </continuation_status>
+    <defect_notes>
+      No image defect. Note the deliberate (A5) overlap with IMG-027 - this is a duplicate region,
+      not a conflict; Stage 3 should verify the two renderings of H_5 agree. The unique/new content
+      of this image is (A4)/H_4.
+    </defect_notes>
+    <rescan_needed>false</rescan_needed>
+    <source_note>
+      PROVENANCE: This image was supplied by the user in conversation revision r2 to fill the (A4) gap
+      (manifest flag MF-001). It was pasted inline in chat rather than uploaded as a file, so at the time
+      of this manifest update NO source PNG exists on disk under 00_inputs/images/batch_F/.
+      REQUIRED ACTION FOR FILE-ONLY HANDOFF: save the supplied screenshot to
+      "00_inputs/images/batch_F/IMG-00 (26B).png" so Stage 2/Stage 3 can read it as a file.
+      Until that file is placed, IMG-026B's canonical visual source is the inline chat image; the manifest
+      metadata above already reflects its verified content.
+    </source_note>
+    <insertion_record>
+      new_image_id=IMG-026B; inserted_between=IMG-026 and IMG-027; batch=F;
+      reason=supply missing Appendix Eq. (A4)/H_4 (resolves MF-001);
+      downstream_directive=treat IMG-026B as part of the Appendix A sequence between IMG-026 and IMG-027;
+      numbering_impact=NONE (no existing IDs renumbered; suffixed ID used per user's preferred option).
+    </insertion_record>
+  </image>
+
+  <image image_id="IMG-027" batch_id="F" original_filename="IMG-00 (27).png">
+    <apparent_paper_order>27</apparent_paper_order>
+    <apparent_page>Appendix A (continued)</apparent_page>
+    <section_heading>Appendix A (continued)</section_heading>
+    <equation_numbers_visible>(A5),(A6)</equation_numbers_visible>
+    <table_numbers_visible>none</table_numbers_visible>
+    <figure_numbers_visible>none</figure_numbers_visible>
+    <content_type>appendix equations: H_5 (A5) and H_6 (A6) expressed via IN/IN* shorthand with D_w,S_w,K_w,T_w terms</content_type>
+    <readability>PARTIAL (long multi-line expressions; small sub/superscripts - high-zoom required)</readability>
+    <continuation_status>continues previous; continues next. NOTE (r2): the (A4) gap before this page is now filled by inserted IMG-026B. IMG-026B also repeats this page's first equation (A5)/H_5 (one-equation overlap seam).</continuation_status>
+    <defect_notes>Left-margin start confirmed by zoom as "H_5 = D_w pi sin a (IN13...". The (A4)/H_4 that was absent between IMG-026 and IMG-027 is now supplied by IMG-026B (MF-001 RESOLVED). (A5)/H_5 appears on both IMG-026B and this image - Stage 3 should confirm the two agree. Audit-sensitive page.</defect_notes>
+    <rescan_needed>false (A4 recovered via IMG-026B; this page is otherwise readable)</rescan_needed>
+  </image>
+
+  <image image_id="IMG-028" batch_id="F" original_filename="IMG-00 (28).png">
+    <apparent_paper_order>28</apparent_paper_order>
+    <apparent_page>Appendix A (continued)</apparent_page>
+    <section_heading>Appendix A (continued)</section_heading>
+    <equation_numbers_visible>(A7),(A8),(A9)</equation_numbers_visible>
+    <table_numbers_visible>none</table_numbers_visible>
+    <figure_numbers_visible>none</figure_numbers_visible>
+    <content_type>appendix mass-coefficient equations: H_7 (A7), H_8 (A8), H_9 (A9) in terms of m_w, m_r*, m_st* and IN/IN* shorthand with cos alpha factors</content_type>
+    <readability>CLEAR (each is a single line; relatively well printed)</readability>
+    <continuation_status>continues previous; continues next</continuation_status>
+    <defect_notes>These three are the cleanest appendix equations. Note starred mass terms (m_r*, m_st*) and IN9/IN10/IN3/IN4 with IN*15/IN*16 - Stage 2 to preserve star placement exactly.</defect_notes>
+    <rescan_needed>false</rescan_needed>
+  </image>
+
+  <image image_id="IMG-029" batch_id="F" original_filename="IMG-00 (29).png">
+    <apparent_paper_order>29</apparent_paper_order>
+    <apparent_page>Appendix A (continued)</apparent_page>
+    <section_heading>Appendix A (continued)</section_heading>
+    <equation_numbers_visible>(A10); plus the (A11) block of IN definitions (IN1..IN16) for the equivalent orthotropic shell - block referenced as "Eqs. A11" on IMG-030</equation_numbers_visible>
+    <table_numbers_visible>none</table_numbers_visible>
+    <figure_numbers_visible>none</figure_numbers_visible>
+    <content_type>guidance text on starred (*) substitution / two approaches; stringer-property definitions Eq (A10) (D_st,S_st,K_st,T_st,m_st for equivalent orthotropic shell); definitions of IN1 through IN15 (and "and" leading into IN16) as polynomial expressions in s1,s2,k_m</content_type>
+    <readability>PARTIAL (verified via vertical-half zoom; IN definitions legible but small fractions/exponents - e.g., possible "k_m^4" vs "km^4" rendering in IN4/IN10 - flagged MF-003 for Stage 2/3)</readability>
+    <continuation_status>continues previous; the IN-definition list continues onto IMG-030 (IN16)</continuation_status>
+    <defect_notes>Portrait page, dense. The (A11) equation label is not printed beside every IN line; it is the equivalent-orthotropic IN block (confirmed by IMG-030 text "obtained from Eqs. A11"). Stage 2 to zoom each IN line.</defect_notes>
+    <rescan_needed>false (legible at zoom; flag exponents for audit)</rescan_needed>
+  </image>
+
+  <image image_id="IMG-030" batch_id="F" original_filename="IMG-00 (30).png">
+    <apparent_paper_order>30</apparent_paper_order>
+    <apparent_page>Appendix A (end)</apparent_page>
+    <section_heading>Appendix A (continued / end)</section_heading>
+    <equation_numbers_visible>(A12)</equation_numbers_visible>
+    <table_numbers_visible>none</table_numbers_visible>
+    <figure_numbers_visible>none</figure_numbers_visible>
+    <content_type>general-reinforced-shell IN definitions Eq (A12): summation forms over P rings / Q stringers for the starred exceptions (IN2,IN4,IN6,IN7,IN8,IN10,IN12,IN13) and IN15/IN16 (each with two alternative cos^2/sin^2 forms); closing appendix text (theta_1 = 0; rotatory inertia, transverse shear, structural damping neglected; rings share material/section, stringers share material/section, but shell/ring/stringer materials may differ; "In Eqs. A1-A8 ...")</content_type>
+    <readability>PARTIAL (verified via two-half zoom; summation expressions legible; small exponents)</readability>
+    <continuation_status>continues previous (closes Appendix A and the document portion provided)</continuation_status>
+    <defect_notes>Closing text states key global modeling assumptions - capture in Stage 2 as modeling-relevant text. Note explicit reference "In Eqs. A1-A8" reinforces that the H-set runs A1..A9 with A4 missing from the images (MF-001).</defect_notes>
+    <rescan_needed>false</rescan_needed>
+  </image>
+
+  <completeness_check>
+    <all_images_listed>true (30 original IMG-001..IMG-030 + inserted IMG-026B = 31 catalogued)</all_images_listed>
+    <batches_covered>A(1-5), B(6-10), C(11-15), D(16-20), E(21-25), F(26, 26B, 27-30)</batches_covered>
+    <no_extraction_performed>true (only headings, numbers, content-type, readability, continuation, defects recorded; equation content noted for IMG-026B is descriptive cataloguing to justify the insertion, not Stage-2 transcription)</no_extraction_performed>
+    <notation_register_used_for>symbol-awareness only (to flag notation-conflict-sensitive labels), not for extraction</notation_register_used_for>
+    <appendix_equation_coverage>A1,A2,A3 (IMG-026); A4,A5 (IMG-026B); A5,A6 (IMG-027); A7,A8,A9 (IMG-028); A10 + IN(A11) block (IMG-029); A12 (IMG-030). H-series A1..A9 now complete.</appendix_equation_coverage>
+    <open_items_for_later_stages>
+      MF-001 RESOLVED (A4/H_4 supplied via IMG-026B).
+      MF-002 OPEN (Figs 6/8/10 absent) - per user r2 directive, frequency/comparison plots are NOT required for the current objective and need not be analyzed unless they carry equations/definitions/table values; this flag is therefore informational only.
+      MF-003 OPEN (small Appendix exponents to verify in Stage 2/3).
+      ACTION ITEM: place the IMG-026B source PNG on disk at "00_inputs/images/batch_F/IMG-00 (26B).png" to complete the file-only handoff (see IMG-026B/source_note).
+    </open_items_for_later_stages>
+  </completeness_check>
+
+</image_manifest>

@@ -1,0 +1,761 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<extraction version="1.0" paper="Crenwelge-Muster-1969"
+            title="Free Vibrations of Ring- and Stringer-Stiffened Conical Shells"
+            stage="2"
+            format="hybrid-latex-xml">
+
+  <!--
+    STAGE 2 - CONSERVATIVE EXTRACTION
+    Authority: the 31 catalogued images (IMG-001..IMG-030 + IMG-026B) and 00_inputs/notation_register.md.
+    Rules honored: no guessing; unclear items marked <ambiguity>; suspected paper issues only as
+    preliminary <suspected_issue> (final classification deferred to Stage 5); no CSV; no code; plots
+    not analyzed for data (only captions/labels recorded). Every item carries source_image + batch_id.
+    LaTeX appears only inside <eq>...</eq>. Time derivatives written with \dot; commas in subscripts
+    (e.g. v,_s) denote partial differentiation per the paper's stated convention.
+  -->
+
+  <extraction_notes>
+    <note id="N-001" type="PROCESS_CORRECTION" severity="HIGH">
+      Stage-1 manifest flag MF-001 stated Appendix Eq. (A4)/H_4 was MISSING between IMG-026 and IMG-027.
+      During Stage-2 high-zoom reading this was found to be INCORRECT: the BOTTOM of the original IMG-026
+      contains H_4 / (A4) in full (it was cut off in the Stage-1 downsampled view). The user-supplied
+      IMG-026B (which contains A4 and A5) was therefore corroborating, not gap-filling. The A4 text on
+      IMG-026 and on IMG-026B AGREE verbatim, and the A5 text on IMG-026B and IMG-027 AGREE verbatim.
+      (A4) below is therefore HIGH confidence with two independent sources. No real gap ever existed.
+    </note>
+    <note id="N-002" type="SUBSCRIPT_CONVENTION">
+      A comma in a subscript denotes partial differentiation w.r.t. the following variable(s)
+      (paper: "The comma denotes differentiation with respect to the variable subscripts that follow it").
+      e.g. w,_ss = d^2 w/ds^2 ; u,_theta = du/dtheta ; w,_stheta = d^2 w/(ds dtheta).
+    </note>
+    <note id="N-003" type="STARRED_TERMS">
+      "Starred" quantities (e.g. D_r*, S_st*, IN*7, m_r*) are placeholders in the Eq.(28) coefficient
+      formulas whose concrete values depend on which modeling approach is used: the EQUIVALENT
+      ORTHOTROPIC shell (Eqs. 15, 19 with A10/A11) or the GENERAL reinforced shell (Eqs. 17, 21 with
+      A12). Star placement has been transcribed exactly and must be preserved (Stage 3 audit target).
+    </note>
+    <note id="N-004" type="PENDING_FILE">
+      IMG-026B has no on-disk PNG yet (it was supplied inline in chat). Its content was read from the
+      supplied image. Stage 3's blind re-audit of IMG-026B will require that PNG to be saved at
+      00_inputs/images/batch_F/IMG-00 (26B).png. (A4/A5 are independently sourced from IMG-026/IMG-027,
+      so extraction is not blocked.)
+    </note>
+  </extraction_notes>
+
+  <!-- ============================================================ -->
+  <!-- FRONT MATTER                                                  -->
+  <!-- ============================================================ -->
+
+  <text id="TXT-ABSTRACT" source_image="IMG-001" batch_id="A" type="abstract" confidence="HIGH">
+    Strain-displacement relations are developed for a thin truncated circular conical shell and its
+    reinforcing rings and stringers. Using these relations in an energy approach, methods are developed
+    for determining the resonant frequencies of equally-spaced ring-stiffened, or ring-and-stringer-
+    stiffened configurations. The stiffeners may be either widely separated or closely spaced. Computed
+    values obtained using these methods are compared with the results of a series of experiments on
+    ring-stiffened and ring-and-stringer-stiffened conical shells.
+    <notes>Header codes "12.7, 12.3" and "Received 6 January 1969" appear at top. Authors O. E. Crenwelge, Jr. and D. Muster, Dept. of Mechanical Engineering, University of Houston.</notes>
+  </text>
+
+  <definitions id="DEF-SYMBOLS" source_image="IMG-002,IMG-003" batch_id="A" confidence="HIGH">
+    <heading>LIST OF SYMBOLS (page 176) - transcribed from the paper; cross-consistent with notation_register.md</heading>
+    <item symbol="A"><eq>A</eq> = cross-sectional area, inches^2</item>
+    <item symbol="D"><eq>D</eq> = extensional rigidity</item>
+    <item symbol="E"><eq>E</eq> = modulus of elasticity, pounds per square inch</item>
+    <item symbol="G"><eq>G</eq> = shear modulus, pounds per square inch</item>
+    <item symbol="I"><eq>I</eq> = moment of inertia about centroidal axis, inches^4</item>
+    <item symbol="J"><eq>J</eq> = torsional constant, inches^4</item>
+    <item symbol="K"><eq>K</eq> = bending rigidity</item>
+    <item symbol="P"><eq>P</eq> = number of rings</item>
+    <item symbol="Q"><eq>Q</eq> = number of stringers</item>
+    <item symbol="S"><eq>S</eq> = rigidity moment</item>
+    <item symbol="T"><eq>T</eq> = twisting rigidity; or kinetic energy</item>
+    <item symbol="U_mn,V_mn,W_mn"><eq>U_{mn}, V_{mn}, W_{mn}</eq> = amplitudes of generalized coordinates u_{mn}, v_{mn}, w_{mn} in the circumferential, meridional, and normal-to-shell directions, respectively</item>
+    <item symbol="V"><eq>V</eq> = strain energy</item>
+    <item symbol="b"><eq>b</eq> = distance between evenly spaced stiffeners, inches</item>
+    <item symbol="c"><eq>c</eq> = distance from shell middle surface to stiffener centroid (positive when stiffener lies on outside of shell), inches</item>
+    <item symbol="f"><eq>f</eq> = resonant frequency, cycles per second</item>
+    <item symbol="g"><eq>g</eq> = acceleration of gravity, 386.4 in./sec^2</item>
+    <item symbol="j"><eq>j=\sqrt{-1}</eq></item>
+    <item symbol="m"><eq>m</eq> = number of meridional half-waves; or mass per unit area or per unit length</item>
+    <item symbol="n"><eq>n</eq> = number of circumferential waves</item>
+    <item symbol="s"><eq>s</eq> = distance from cone apex along meridian to a point on shell middle surface, inches</item>
+    <item symbol="s_r"><eq>s_r</eq> = distance of rth ring from cone apex in meridional direction, inches</item>
+    <item symbol="s_1,s_2"><eq>s_1, s_2</eq> = distance along meridian from cone apex to small base and to large base of conical shell, respectively, inches</item>
+    <item symbol="t"><eq>t</eq> = time, seconds</item>
+    <item symbol="t_w"><eq>t_w</eq> = thickness of thin shell wall, inches</item>
+    <item symbol="u,v,w"><eq>u, v, w</eq> = displacements of point on shell middle surface in circumferential, meridional, and normal-to-shell directions, respectively</item>
+    <item symbol="u_mn,v_mn,w_mn"><eq>u_{mn}, v_{mn}, w_{mn}</eq> = time dependent generalized coordinates of displacements u, v, w, respectively</item>
+    <item symbol="z"><eq>z</eq> = distance of a point in shell wall or in stiffeners from middle surface in direction normal to middle surface, inches</item>
+    <item symbol="alpha"><eq>\alpha</eq> = angle between meridian on shell middle surface and large base of cone, radians</item>
+    <item symbol="beta"><eq>\beta</eq> = angle between evenly spaced stringers on circumference, radians</item>
+    <item symbol="gamma"><eq>\gamma</eq> = specific weight, pounds per cubic inch</item>
+    <item symbol="epsilon"><eq>\epsilon</eq> = strain at distance z from shell middle surface</item>
+    <item symbol="epsilon_bar"><eq>\bar{\epsilon}</eq> = membrane strains</item>
+    <item symbol="theta"><eq>\theta</eq> = angular distance in circumferential direction, radians</item>
+    <item symbol="theta_st"><eq>\theta_{st}</eq> = distance of st-th stringer from first stringer at theta_1 = 0 rad, radians</item>
+    <item symbol="nu_w"><eq>\nu_w</eq> = Poisson's ratio for shell wall material</item>
+    <item symbol="sigma"><eq>\sigma</eq> = stress, pounds per square inch</item>
+    <item symbol="chi"><eq>\chi</eq> = change of curvature or twist</item>
+    <item symbol="omega"><eq>\omega</eq> = circular resonant frequency, radians/second</item>
+    <item symbol="subscripts_wrst">Subscripts w, r, st refer to shell wall, ring, and stringer, respectively</item>
+    <item symbol="subscripts_directions">Subscripts s, theta, s-theta refer to meridional and circumferential directions and shear, respectively</item>
+    <notes>w is defined here as "normal-to-shell" but Eq.(25) text calls its direction "radial" (notation-register conflict NC008). T and m are overloaded (NC003/NC002). j conflicts with Table I geometric symbols (NC007).</notes>
+  </definitions>
+
+  <text id="TXT-INTRO" source_image="IMG-004,IMG-005" batch_id="A" type="introduction" confidence="HIGH">
+    Section: INTRODUCTION. Primarily a literature review (vibration of cylindrical, conical, stiffened
+    and unstiffened shells; clamped/free and simply-supported conditions; energy and other methods) and
+    a statement of scope. Not theory-bearing for the model itself. Modeling-relevant scope statement:
+    the study develops strain-displacement relations and an energy method, computes natural frequencies
+    and mode shapes for ring- and ring-and-stringer-stiffened truncated conical shells, and compares with
+    experiment. No equations appear in the introduction.
+    <notes>Full literature-review prose intentionally not transcribed (no modeling content). Flag none.</notes>
+  </text>
+
+  <!-- ============================================================ -->
+  <!-- SECTION I. THEORY                                             -->
+  <!-- ============================================================ -->
+
+  <text id="TXT-THEORY-OPEN" source_image="IMG-006" batch_id="B" type="theory-framing" confidence="HIGH">
+    I. THEORY. "Consider a thin truncated conical shell of the geometry and coordinates shown in Fig. 1.
+    The strains at a distance z from the shell middle surface are given by" [Eqs. 1-3]. Eqs. 4-6 give the
+    extensional (membrane) strains in the meridional (s) and circumferential (theta) directions and the
+    shear strain (s-theta); Eqs. 7-9 give the changes of curvature in s and theta and the twist.
+  </text>
+
+  <equation id="EQ-001" paper_number="(1)" source_image="IMG-006" batch_id="B" confidence="HIGH" type="wall-strain">
+    <eq>{}^{w}\epsilon_s = \bar{\epsilon}_s - z\,\chi_s</eq>
+    <notes>Shell-wall meridional strain at distance z.</notes>
+  </equation>
+
+  <equation id="EQ-002" paper_number="(2)" source_image="IMG-006" batch_id="B" confidence="HIGH" type="wall-strain">
+    <eq>{}^{w}\epsilon_\theta = \bar{\epsilon}_\theta - z\,\chi_\theta</eq>
+    <notes>Shell-wall circumferential strain at distance z.</notes>
+  </equation>
+
+  <equation id="EQ-003" paper_number="(3)" source_image="IMG-006" batch_id="B" confidence="HIGH" type="wall-strain">
+    <eq>{}^{w}\epsilon_{s\theta} = \bar{\epsilon}_{s\theta} - 2z\,\chi_{s\theta}</eq>
+    <notes>Shell-wall shear strain at distance z. Note factor 2 on the z*chi_stheta term (cf. factor 1 in Eqs 1-2).</notes>
+  </equation>
+
+  <equation id="EQ-004" paper_number="(4)" source_image="IMG-006" batch_id="B" confidence="HIGH" type="membrane-strain">
+    <eq>\bar{\epsilon}_s = v,_s</eq>
+    <notes>Meridional membrane strain. v,_s = dv/ds.</notes>
+  </equation>
+
+  <equation id="EQ-005" paper_number="(5)" source_image="IMG-006" batch_id="B" confidence="HIGH" type="membrane-strain">
+    <eq>\bar{\epsilon}_\theta = \left( u,_\theta/\cos\alpha + v + w\tan\alpha \right)/s</eq>
+    <notes>Circumferential membrane strain.</notes>
+  </equation>
+
+  <equation id="EQ-006" paper_number="(6)" source_image="IMG-006" batch_id="B" confidence="HIGH" type="membrane-strain">
+    <eq>\bar{\epsilon}_{s\theta} = u,_s - u/s + v,_\theta/(s\cos\alpha)</eq>
+    <notes>Middle-surface shear strain.</notes>
+  </equation>
+
+  <equation id="EQ-007" paper_number="(7)" source_image="IMG-006" batch_id="B" confidence="HIGH" type="curvature-change">
+    <eq>\chi_s = w,_{ss}</eq>
+    <notes>Change of curvature, meridional.</notes>
+  </equation>
+
+  <equation id="EQ-008" paper_number="(8)" source_image="IMG-006" batch_id="B" confidence="HIGH" type="curvature-change">
+    <eq>\chi_\theta = w,_s/s + \left( w,_{\theta\theta} - u,_\theta \sin\alpha \right)/(s^2 \cos^2\alpha)</eq>
+    <notes>Change of curvature, circumferential.</notes>
+  </equation>
+
+  <equation id="EQ-009" paper_number="(9)" source_image="IMG-006" batch_id="B" confidence="HIGH" type="twist">
+    <eq>\chi_{s\theta} = \frac{w,_{s\theta}}{s\cos\alpha} - \frac{w,_\theta}{s^2\cos\alpha} - \frac{u,_s \tan\alpha}{2s} + \frac{u\tan\alpha}{s^2}</eq>
+    <notes>Twist. Term signs verified at high zoom: +, -, -, +.</notes>
+  </equation>
+
+  <text id="TXT-THEORY-CURV" source_image="IMG-007" batch_id="B" type="theory-framing" confidence="HIGH">
+    "These are the changes of curvature in the s and theta directions and the twist, respectively. The
+    displacements of a point on the shell middle surface are denoted by u, v, w in the theta, s, z
+    directions, respectively. The comma denotes differentiation with respect to the variable subscripts
+    that follow it. It has been assumed that the shell displacements and displacement gradients are small
+    so that linear shell theory is applicable." Then: "Consider a thin conical shell reinforced with rings
+    and stringers. An element of this shell is shown in Fig. 2. Assuming that the stiffeners are thin, the
+    interactions at the ring and stringer joints may be ignored, and the state of strain of a stiffener is
+    normal strain in the direction of its largest dimension and twist; thus, we have for the rings" [Eqs 10-11]
+    "and for the stringers" [Eq 12 ...].
+    <modeling_assumptions>
+      (a) linear shell theory (small displacements/gradients);
+      (b) stiffeners are thin -> ring/stringer joint interactions ignored;
+      (c) stiffener state of strain = normal strain along its largest dimension + twist.
+    </modeling_assumptions>
+  </text>
+
+  <equation id="EQ-010" paper_number="(10)" source_image="IMG-007" batch_id="B" confidence="HIGH" type="ring-strain">
+    <eq>{}^{r}\epsilon_\theta = \bar{\epsilon}_\theta - z\,\chi_\theta</eq>
+    <notes>Ring circumferential strain at distance z.</notes>
+  </equation>
+
+  <equation id="EQ-011" paper_number="(11)" source_image="IMG-007" batch_id="B" confidence="HIGH" type="ring-twist">
+    <eq>{}^{r}\chi_{s\theta} = w,_{s\theta}/(s\cos\alpha)</eq>
+    <notes>Ring twist.</notes>
+  </equation>
+
+  <equation id="EQ-012" paper_number="(12)" source_image="IMG-007" batch_id="B" confidence="HIGH" type="stringer-strain">
+    <eq>{}^{st}\epsilon_s = \bar{\epsilon}_s - z\,\chi_s</eq>
+    <notes>Stringer meridional strain at distance z. Equation number (12) read from IMG-007; the expression continues/closes on IMG-008's top region near Eq.(13).</notes>
+  </equation>
+
+  <equation id="EQ-013" paper_number="(13)" source_image="IMG-008" batch_id="B" confidence="MEDIUM" type="stringer-twist">
+    <eq>{}^{st}\chi_{s\theta} = w,_{s\theta}/(s\cos\alpha) - w,_\theta/(s^2\cos\alpha) - u,_s\tan\alpha/(2s) + u\tan\alpha/s^2</eq>
+    <notes>Stringer twist (top line of IMG-008). This line is the most cramped on the page; the
+    transcription mirrors the twist structure of Eq.(9). Confidence MEDIUM pending Stage-3 zoom
+    confirmation of the exact denominators/signs - see AMB-001.</notes>
+  </equation>
+
+  <ambiguity id="AMB-001" source_image="IMG-008" batch_id="B" severity="MEDIUM" status="OPEN">
+    <location>Eq. (13), top line of IMG-008 (stringer twist {}^{st}\chi_{s\theta}).</location>
+    <problem>The equation sits in a tightly-set top line with small stacked fractions; while it appears to mirror Eq.(9), the exact coefficients/denominators (e.g. the 2s denominator and the s^2 term) were not independently re-zoomed to the same certainty as Eq.(9).</problem>
+    <possible_readings>Most likely identical in form to Eq.(9): w,_{s\theta}/(s cos a) - w,_\theta/(s^2 cos a) - u,_s tan a/(2s) + u tan a/s^2.</possible_readings>
+    <needed_resolution>Stage 3 blind audit to re-zoom IMG-008 top line and confirm each term/sign of Eq.(13).</needed_resolution>
+  </ambiguity>
+
+  <text id="TXT-APPROACHES" source_image="IMG-008" batch_id="B" type="theory-framing" confidence="HIGH">
+    Two modeling approaches are introduced. (1) EQUIVALENT ORTHOTROPIC shell: when stiffeners are
+    closely/equally spaced their effects are distributed (smeared) over the shell surface; the shell is
+    analyzed as an equivalent orthotropic shell (leads to Eqs. 14/15 and 18/19). (2) GENERAL reinforced
+    shell (Ref. 15): the shell may have any number of stiffeners not necessarily closely or equally spaced;
+    the effects are concentrated at the respective stiffener locations (leads to Eqs. 16/17 and 20/21).
+  </text>
+
+  <equation id="EQ-U01" paper_number="unnumbered" source_image="IMG-010" batch_id="B" confidence="HIGH" type="geometry-relation">
+    <eq>b_{st} = s\,\beta\,\cos\alpha</eq>
+    <notes>Stringer circumferential spacing (unnumbered relation at top of IMG-010).</notes>
+  </equation>
+
+  <equation id="EQ-014" paper_number="(14)" source_image="IMG-009" batch_id="B" confidence="HIGH" type="strain-energy-equivalent-orthotropic">
+    <eq>
+V = \tfrac{1}{2}\int_{s_1}^{s_2}\!\!\int_{0}^{2\pi}\Big\{ D_w\big[\bar{\epsilon}_\theta^{\,2}+\bar{\epsilon}_s^{\,2}+2\nu_w\bar{\epsilon}_s\bar{\epsilon}_\theta+\tfrac{1}{2}(1-\nu_w)\bar{\epsilon}_{s\theta}^{\,2}\big] + K_w\big[\chi_\theta^{\,2}+\chi_s^{\,2}+2\nu_w\chi_s\chi_\theta+2(1-\nu_w)\chi_{s\theta}^{\,2}\big]\Big\} s\cos\alpha\,d\theta\,ds
+\;+\; \tfrac{1}{2}\int_{s_1}^{s_2}\!\!\int_{0}^{2\pi}\big\{ D_r\bar{\epsilon}_\theta^{\,2}-2S_r\bar{\epsilon}_\theta\chi_\theta+K_r\chi_\theta^{\,2}+T_r\chi_{s\theta}^{\,2}\big\} s\cos\alpha\,d\theta\,ds
+\;+\; \tfrac{1}{2}\int_{s_1}^{s_2}\!\!\int_{0}^{2\pi}\big\{ D_{st}\bar{\epsilon}_s^{\,2}-2S_{st}\bar{\epsilon}_s\chi_s+K_{st}\chi_s^{\,2}+T_{st}\chi_{s\theta}^{\,2}\big\} s\cos\alpha\,d\theta\,ds
+    </eq>
+    <notes>Strain energy, equivalent orthotropic (smeared) approach. Wall bracket coefficients verified at
+    high zoom: membrane shear carries 1/2(1-nu_w); bending twist carries 2(1-nu_w). See SUSP-001 re: this 1/2-vs-2 asymmetry (deferred to Stage 5, NOT asserted as an error).</notes>
+  </equation>
+
+  <equation id="EQ-015" paper_number="(15)" source_image="IMG-009" batch_id="B" confidence="HIGH" type="rigidity-definitions-equivalent-orthotropic">
+    <eq>
+\begin{aligned}
+D_w &amp;= E_w t_w/(1-\nu_w^2), &amp; D_r &amp;= E_r A_r/b_r, &amp; D_{st} &amp;= E_{st} A_{st}/b_{st},\\
+S_r &amp;= E_r A_r c_r/b_r, &amp; S_{st} &amp;= E_{st} A_{st} c_{st}/b_{st}, &amp; K_w &amp;= E_w t_w^3/[12(1-\nu_w^2)],\\
+K_r &amp;= E_r(I_r + A_r c_r^2)/b_r, &amp; K_{st} &amp;= E_{st}(I_{st}+A_{st}c_{st}^2)/b_{st}, &amp; T_r &amp;= G_r J_r/b_r,\\
+T_{st} &amp;= G_{st}J_{st}/b_{st}. &amp; &amp; &amp; &amp;
+\end{aligned}
+    </eq>
+    <notes>Rigidity/stiffness definitions for the equivalent orthotropic shell. "D_w and K_w are the same as before" is re-stated at Eq.(17). All divided by stiffener spacing b_r or b_st (smeared).</notes>
+  </equation>
+
+  <text id="TXT-FIG1" source_image="IMG-009" batch_id="B" type="figure-context" confidence="HIGH">
+    Fig. 1 (line diagram, lower-left of IMG-009). See FIG-001.
+  </text>
+
+  <figure id="FIG-001" paper_number="Fig. 1" source_image="IMG-009" batch_id="B" confidence="HIGH">
+    <caption>Thin truncated conical shell - geometry and coordinate system.</caption>
+    <labels>s_1, s_2, s (meridional coordinates); r; t_w (wall thickness); alpha (semi-vertex-related angle); r = s cos alpha; r_t = s cot alpha.</labels>
+    <notes>Defines the geometric relations r = s cos(alpha) and r_t = s cot(alpha). r_t meaning flagged "ambiguous" in notation_register (status carried, see AMB-002).</notes>
+  </figure>
+
+  <ambiguity id="AMB-002" source_image="IMG-009" batch_id="B" severity="LOW" status="OPEN">
+    <location>Fig. 1 label r_t = s cot(alpha).</location>
+    <problem>The physical meaning of r_t is not stated on the figure; notation_register marks r_t as "ambiguous / physical meaning pending".</problem>
+    <possible_readings>Likely the distance from the cone axis along the normal/horizontal projection (geometry helper), but not defined in visible text.</possible_readings>
+    <needed_resolution>Confirm whether any visible text defines r_t; otherwise leave as geometry helper.</needed_resolution>
+  </ambiguity>
+
+  <equation id="EQ-016" paper_number="(16)" source_image="IMG-010" batch_id="B" confidence="HIGH" type="strain-energy-general-reinforced">
+    <eq>
+V = \tfrac{1}{2}\int_{s_1}^{s_2}\!\!\int_{0}^{2\pi}\Big\{ D_w\big[\bar{\epsilon}_\theta^{\,2}+\bar{\epsilon}_s^{\,2}+2\nu_w\bar{\epsilon}_s\bar{\epsilon}_\theta+\tfrac{1}{2}(1-\nu_w)\bar{\epsilon}_{s\theta}^{\,2}\big] + K_w\big[\chi_\theta^{\,2}+\chi_s^{\,2}+2\nu_w\chi_s\chi_\theta+2(1-\nu_w)\chi_{s\theta}^{\,2}\big]\Big\} s\cos\alpha\,d\theta\,ds
+\;+\; \tfrac{1}{2}\sum_{r=1}^{P}\Big\{ \int_{0}^{2\pi}\big[ D_r\bar{\epsilon}_\theta^{\,2}-2S_r\bar{\epsilon}_\theta\chi_\theta+K_r\chi_\theta^{\,2}+T_r\chi_{s\theta}^{\,2}\big]\, s_r\cos\alpha\,d\theta \Big\}_{r}
+\;+\; \tfrac{1}{2}\sum_{st=1}^{Q}\Big\{ \int_{s_1}^{s_2}\big[ D_{st}\bar{\epsilon}_s^{\,2}-2S_{st}\bar{\epsilon}_s\chi_s+K_{st}\chi_s^{\,2}+T_{st}\chi_{s\theta}^{\,2}\big]\, ds \Big\}_{st}
+    </eq>
+    <notes>Strain energy, general reinforced shell (concentrated stiffeners). Verified at high zoom:
+    RING sum integrand carries factor s_r cos(alpha) d(theta) (note s_r = ring meridional location, not s);
+    STRINGER sum integrand carries only ds (no s cos(alpha) factor). Wall (first) term identical to Eq.(14) wall term.</notes>
+  </equation>
+
+  <equation id="EQ-017" paper_number="(17)" source_image="IMG-011" batch_id="C" confidence="HIGH" type="rigidity-definitions-general-reinforced">
+    <eq>
+\begin{aligned}
+D_r &amp;= E_r A_r, &amp; D_{st} &amp;= E_{st} A_{st}, &amp; S_r &amp;= E_r A_r c_r, &amp; S_{st} &amp;= E_{st} A_{st} c_{st},\\
+K_r &amp;= E_r(I_r + A_r c_r^2), &amp; K_{st} &amp;= E_{st}(I_{st}+A_{st}c_{st}^2), &amp; T_r &amp;= G_r J_r, &amp; T_{st} &amp;= G_{st}J_{st}.
+\end{aligned}
+    </eq>
+    <notes>Rigidity definitions for the GENERAL reinforced shell ("where D_w and K_w are the same as before").
+    Identical to Eq.(15) ring/stringer terms BUT WITHOUT division by b_r or b_st (concentrated, not smeared). This distinction is theory-critical.</notes>
+  </equation>
+
+  <equation id="EQ-018" paper_number="(18)" source_image="IMG-011" batch_id="C" confidence="HIGH" type="kinetic-energy-equivalent-orthotropic">
+    <eq>T = \tfrac{1}{2}\int_{s_1}^{s_2}\!\!\int_{0}^{2\pi}\big\{ (m_w+m_r+m_{st})(\dot{u}^2+\dot{v}^2+\dot{w}^2) \big\}\, s\cos\alpha\,d\theta\,ds</eq>
+    <notes>Kinetic energy, equivalent orthotropic. Dots denote time derivatives. T here = kinetic energy (not twisting rigidity).</notes>
+  </equation>
+
+  <equation id="EQ-019" paper_number="(19)" source_image="IMG-011" batch_id="C" confidence="HIGH" type="mass-definitions-equivalent-orthotropic">
+    <eq>m_w = \gamma_w t_w/g, \qquad m_r = \gamma_r A_r/(g\,b_r), \qquad m_{st} = \gamma_{st} A_{st}/(g\,b_{st})</eq>
+    <notes>Mass-per-area terms, equivalent orthotropic (smeared; divided by spacing).</notes>
+  </equation>
+
+  <equation id="EQ-020" paper_number="(20)" source_image="IMG-011" batch_id="C" confidence="HIGH" type="kinetic-energy-general-reinforced">
+    <eq>
+T = \tfrac{1}{2}\int_{s_1}^{s_2}\!\!\int_{0}^{2\pi}\big\{ m_w(\dot{u}^2+\dot{v}^2+\dot{w}^2)\big\} s\cos\alpha\,d\theta\,ds
+\;+\; \tfrac{1}{2}\sum_{r=1}^{P}\Big\{ \int_{0}^{2\pi} m_r(\dot{u}^2+\dot{v}^2+\dot{w}^2)\, s_r\cos\alpha\,d\theta \Big\}_{r}
+\;+\; \tfrac{1}{2}\sum_{st=1}^{Q}\Big\{ \int_{s_1}^{s_2} m_{st}(\dot{u}^2+\dot{v}^2+\dot{w}^2)\, ds \Big\}_{st}
+    </eq>
+    <notes>Kinetic energy, general reinforced shell. Same measure pattern as Eq.(16): ring -> s_r cos(alpha) d(theta); stringer -> ds.</notes>
+  </equation>
+
+  <equation id="EQ-021" paper_number="(21)" source_image="IMG-011" batch_id="C" confidence="HIGH" type="mass-definitions-general-reinforced">
+    <eq>m_r = \gamma_r A_r/g, \qquad m_{st} = \gamma_{st} A_{st}/g</eq>
+    <notes>Mass terms, general reinforced shell ("where m_w is the same as before"). No spacing division (concentrated).</notes>
+  </equation>
+
+  <equation id="EQ-022" paper_number="(22)" source_image="IMG-012" batch_id="C" confidence="HIGH" type="boundary-conditions">
+    <eq>u(s_1,\theta)=u(s_2,\theta)=0, \qquad w(s_1,\theta)=w(s_2,\theta)=0</eq>
+    <notes>Simply supported end conditions at both ends. Constrains u and w (not v) at s_1 and s_2.</notes>
+  </equation>
+
+  <equation id="EQ-023" paper_number="(23)" source_image="IMG-012" batch_id="C" confidence="HIGH" type="trial-function">
+    <eq>u = u_{mn}\, s^2 \sin k_m(s-s_1)\,\cos n\theta</eq>
+    <notes>Trial displacement, circumferential direction (after Grigolyuk, Ref.10). Note cos(n theta) and sin k_m(...).</notes>
+  </equation>
+
+  <equation id="EQ-024" paper_number="(24)" source_image="IMG-012" batch_id="C" confidence="HIGH" type="trial-function">
+    <eq>v = v_{mn}\, s^2 \cos k_m(s-s_1)\,\sin n\theta</eq>
+    <notes>Trial displacement, meridional direction. Note cos k_m(...) (unlike u and w which use sin k_m) and sin(n theta).</notes>
+  </equation>
+
+  <equation id="EQ-025" paper_number="(25)" source_image="IMG-012" batch_id="C" confidence="HIGH" type="trial-function">
+    <eq>w = w_{mn}\, s^2 \sin k_m(s-s_1)\,\sin n\theta</eq>
+    <notes>Trial displacement, "radial" direction (= normal-to-shell w per symbol list; wording conflict NC008).</notes>
+  </equation>
+
+  <equation id="EQ-026" paper_number="(26)" source_image="IMG-012" batch_id="C" confidence="HIGH" type="wavenumber">
+    <eq>k_m = m\pi/(s_2-s_1)</eq>
+    <notes>Meridional wavenumber. m = number of meridional half-waves; n = number of circumferential waves.</notes>
+  </equation>
+
+  <equation id="EQ-027" paper_number="(27)" source_image="IMG-012" batch_id="C" confidence="HIGH" type="time-dependence">
+    <eq>u_{mn}=U_{mn}e^{j\omega t}, \qquad v_{mn}=V_{mn}e^{j\omega t}, \qquad w_{mn}=W_{mn}e^{j\omega t}</eq>
+    <notes>Harmonic time dependence of the generalized coordinates. j = sqrt(-1).</notes>
+  </equation>
+
+  <text id="TXT-S2NOTE" source_image="IMG-012" batch_id="C" type="modeling-note" confidence="HIGH">
+    "The term s^2 is proportional to the cross-sectional area." (Paper's note immediately after Eq.27,
+    explaining the s^2 factor in the assumed displacement fields.)
+  </text>
+
+  <figure id="FIG-002" paper_number="Fig. 2" source_image="IMG-012" batch_id="C" confidence="HIGH">
+    <caption>Element of reinforced conical shell.</caption>
+    <labels>STRINGER, THIN WALL, RING; coordinate axes z, s, theta shown.</labels>
+  </figure>
+
+  <figure id="FIG-003" paper_number="Fig. 3" source_image="IMG-013" batch_id="C" confidence="MEDIUM">
+    <caption>Experimental configurations.</caption>
+    <labels>
+      Cross-section sketch labels: m, w, h, k, beta.
+      Elevation/assembly labels: d, D, b_r/2, b_r, M=(s_2 - s_1), section A-A,
+      callouts "1/4 in. ALUMINUM END PLATE", "ADJUSTABLE NUTS", "1/2 in. THREADED STEEL ROD (20 THREADS/IN.)".
+    </labels>
+    <notes>The tiny cross-section labels (m, w, h, k) coincide with notation conflicts NC005/NC006 (geometric vs displacement/area symbols). See AMB-003. The relation M = (s_2 - s_1) is confirmed.</notes>
+  </figure>
+
+  <ambiguity id="AMB-003" source_image="IMG-013" batch_id="C" severity="MEDIUM" status="OPEN">
+    <location>Fig. 3 cross-section dimension labels m, w, h, k (and section marker A).</location>
+    <problem>These single-letter labels are very small and collide with other meanings: m (modal/mass), w (displacement), A (area). The exact geometric dimension each denotes for the stiffener cross-section is not spelled out in visible text; Table I lists numeric values for j, h, m, k as geometric dimensions but does not draw them.</problem>
+    <possible_readings>They are stiffener cross-section dimensions (width/height/leg sizes) consistent with Table I rows j, h, m, k; precise mapping to physical edges is not legible.</possible_readings>
+    <needed_resolution>User/Stage-4 confirmation of the geometric meaning of Fig. 3 / Table I dimensions j, h, m, k (and w) for the stiffener sections; do not guess.</needed_resolution>
+  </ambiguity>
+
+  <text id="TXT-EOM" source_image="IMG-014" batch_id="C" type="theory-framing" confidence="HIGH">
+    "The equations of motion for the vibrating shell can be expressed in the matrix equation" [Eq. 28]
+    "where the H_i are given in the Appendix. The characteristic equation of the matrix Eq. 28 is" [Eq. 29]
+    "where" [Eq. 30]. After Eq.30: "Of the three natural frequencies obtained from Eq. 29 for each
+    combination of m and n, only the lowest (which is associated with radial motion of the shell) is of
+    interest." Preceding text also notes the s^2 factor shifts the point of maximum displacement toward
+    the large end of the cone (stiffness decreases with increasing radius).
+  </text>
+
+  <equation id="EQ-028" paper_number="(28)" source_image="IMG-014" batch_id="C" confidence="HIGH" type="eigenvalue-matrix">
+    <eq>
+\begin{bmatrix} H_1-\omega^2 H_7 &amp; H_2 &amp; H_3 \\ H_2 &amp; H_4-\omega^2 H_8 &amp; H_5 \\ H_3 &amp; H_5 &amp; H_6-\omega^2 H_9 \end{bmatrix}
+\begin{Bmatrix} u_{mn} \\ v_{mn} \\ w_{mn} \end{Bmatrix} = \begin{Bmatrix} 0 \\ 0 \\ 0 \end{Bmatrix}
+    </eq>
+    <notes>Symmetric 3x3 generalized eigenproblem. Diagonal mass-like terms multiply omega^2 (H_7,H_8,H_9).</notes>
+  </equation>
+
+  <equation id="EQ-029" paper_number="(29)" source_image="IMG-014" batch_id="C" confidence="HIGH" type="characteristic-cubic">
+    <eq>A_3 X^3 - A_2 X^2 + A_1 X - A_0 = 0</eq>
+    <notes>Characteristic cubic in X. Alternating signs verified. X defined in Eq.(30).</notes>
+  </equation>
+
+  <equation id="EQ-030" paper_number="(30)" source_image="IMG-014" batch_id="C" confidence="HIGH" type="cubic-coefficients">
+    <eq>
+\begin{aligned}
+A_3 &amp;= 1.0,\\
+A_2 &amp;= -\left( \frac{H_1}{H_7} + \frac{H_4}{H_8} + \frac{H_6}{H_9} \right),\\
+A_1 &amp;= \frac{H_1 H_4 - H_2^2}{H_7 H_8} + \frac{H_1 H_6 - H_3^2}{H_7 H_9} + \frac{H_4 H_6 - H_5^2}{H_8 H_9},\\
+A_0 &amp;= -\left( H_1 H_4 H_6 + 2H_2 H_3 H_5 - H_2^2 H_6 - H_3^2 H_4 - H_1 H_5^2 \right)/(H_7 H_8 H_9),\\
+X &amp;= \omega^2 = (2\pi f)^2.
+\end{aligned}
+    </eq>
+    <notes>All inner signs of A_0 verified at high zoom: +H1H4H6 +2H2H3H5 -H2^2H6 -H3^2H4 -H1H5^2, the whole negated, over (H7H8H9).</notes>
+  </equation>
+
+  <equation id="EQ-031" paper_number="(31)" source_image="IMG-015" batch_id="C" confidence="HIGH" type="mode-ratio">
+    <eq>u_{mn} = -\left( H_5/H_3 \right) v_{mn} - \big[ (H_6 - \omega^2 H_9)/H_3 \big] w_{mn}</eq>
+    <notes>Generalized-displacement (mode ratio) relation for u_mn.</notes>
+  </equation>
+
+  <equation id="EQ-032" paper_number="(32)" source_image="IMG-015" batch_id="C" confidence="HIGH" type="mode-ratio">
+    <eq>v_{mn} = \left\{ \big[ (H_1 - \omega^2 H_7)(H_6 - \omega^2 H_9) - H_3^2 \big] \big/ \big[ H_2 H_3 - H_5(H_1 - \omega^2 H_7) \big] \right\} w_{mn}</eq>
+    <notes>Mode ratio for v_mn in terms of w_mn. Nested brackets/grouping verified.</notes>
+  </equation>
+
+  <equation id="EQ-033" paper_number="(33)" source_image="IMG-015" batch_id="C" confidence="HIGH" type="normalization">
+    <eq>w_{mn} = 1.0</eq>
+    <notes>Normalization of the radial generalized coordinate.</notes>
+  </equation>
+
+  <!-- ============================================================ -->
+  <!-- SECTION II. EXPERIMENTAL (theory-relevant config + tables)   -->
+  <!-- ============================================================ -->
+
+  <text id="TXT-EXP" source_image="IMG-016" batch_id="D" type="experimental-config" confidence="HIGH">
+    II. EXPERIMENTAL INVESTIGATIONS. Three different stiffened shells were tested (see Fig. 3, Tables I, II):
+    Shell No. 1 - reinforced with three equispaced rings;
+    Shell No. 2 - reinforced with three equispaced rings and three equispaced stringers;
+    Shell No. 3 - reinforced with three equispaced rings and six equispaced stringers.
+    Shells machined from solid 6061 aluminum billets; rings and (for shells 2,3) stringers integral.
+    <notes>Defines the three configurations referenced by the theory parameters P (rings) and Q (stringers).</notes>
+  </text>
+
+  <table id="TBL-I" paper_number="Table I" source_image="IMG-017" batch_id="D" confidence="HIGH">
+    <caption>Shell dimensions.</caption>
+    <columns>Symbol(unit) | Shell No. 1 | Shell No. 2 | Shell No. 3</columns>
+    <row><cell>D (in.)</cell><cell>10.50</cell><cell>10.50</cell><cell>10.50</cell></row>
+    <row><cell>d (in.)</cell><cell>6.85</cell><cell>6.85</cell><cell>6.85</cell></row>
+    <row><cell>M (in.)</cell><cell>10.50</cell><cell>10.50</cell><cell>10.50</cell></row>
+    <row><cell>alpha (deg)</cell><cell>80.00</cell><cell>80.00</cell><cell>80.00</cell></row>
+    <row><cell>t_w (in.)</cell><cell>0.10</cell><cell>0.10</cell><cell>0.10</cell></row>
+    <row><cell>P</cell><cell>3.00</cell><cell>3.00</cell><cell>3.00</cell></row>
+    <row><cell>b_r (in.)</cell><cell>3.50</cell><cell>3.50</cell><cell>3.50</cell></row>
+    <row><cell>j (in.)</cell><cell>0.25</cell><cell>0.25</cell><cell>0.25</cell></row>
+    <row><cell>h (in.)</cell><cell>0.25</cell><cell>0.25</cell><cell>0.25</cell></row>
+    <row><cell>Q</cell><cell>0.00</cell><cell>3.00</cell><cell>6.00</cell></row>
+    <row><cell>beta (deg)</cell><cell>(blank)</cell><cell>120.00</cell><cell>60.00</cell></row>
+    <row><cell>m (in.)</cell><cell>(blank)</cell><cell>0.25</cell><cell>0.25</cell></row>
+    <row><cell>k (in.)</cell><cell>(blank)</cell><cell>0.50</cell><cell>0.50</cell></row>
+    <notes>Symbols j, h, m, k here are GEOMETRIC stiffener dimensions (notation conflicts NC002/NC007); their drawn meaning is in Fig.3 but not legible (AMB-003). Blanks for Shell 1 reflect Q=0 (no stringers).</notes>
+  </table>
+
+  <table id="TBL-II" paper_number="Table II" source_image="IMG-018" batch_id="D" confidence="HIGH">
+    <caption>Shell material properties.</caption>
+    <group name="Shell (6061 aluminum)">
+      <item><eq>E_w = 9.9\times10^6\ \text{psi}</eq></item>
+      <item><eq>\nu_w = 0.303</eq></item>
+      <item><eq>\gamma_w = 0.098\ \text{lb/in.}^3</eq></item>
+    </group>
+    <group name="Rings (6061 aluminum)">
+      <item><eq>E_r = 9.9\times10^6\ \text{psi}</eq></item>
+      <item><eq>G_r = 3.8\times10^6\ \text{psi}</eq></item>
+      <item><eq>\gamma_r = 0.098\ \text{lb/in.}^3</eq></item>
+    </group>
+    <group name="Stringers (2024 aluminum)">
+      <item><eq>E_{st} = 10.5\times10^6\ \text{psi}</eq></item>
+      <item><eq>G_{st} = 4.0\times10^6\ \text{psi}</eq></item>
+      <item><eq>\gamma_{st} = 0.10\ \text{lb/in.}^3</eq></item>
+    </group>
+  </table>
+
+  <text id="TXT-RESULTS" source_image="IMG-019,IMG-024" batch_id="D,E" type="results-modeling-relevant" confidence="HIGH">
+    III. RESULTS AND DISCUSSION (modeling-relevant points only; plotted data NOT digitized per instruction):
+    - For each natural frequency, only the lowest root (radial motion) is of physical interest.
+    - The EQUIVALENT ORTHOTROPIC shell theory is reported as inadequate for shells with a few widely
+      separated sturdy stringers for m > 1 (it does not predict the double natural frequencies observed).
+    - The GENERAL theory accounts for two natural frequencies when n is a multiple/submultiple of the
+      number of stringers; for n = 3, 6, 9 two natural frequencies can be computed for each mode depending
+      on whether all stringers lie on nodes or all on antinodes (observed experimentally).
+    - As n increases, the meridional response shortens and shifts toward the large end of the shell
+      (Weingarten effect), explaining computed/measured differences at large n.
+    <notes>These qualitative statements bear on which approach to implement and on multiplicity of roots.</notes>
+  </text>
+
+  <figure id="FIG-004" paper_number="Fig. 4" source_image="IMG-020" batch_id="D" confidence="HIGH" data_analyzed="false">
+    <caption>Conical shell reinforced with three rings and six stringers.</caption>
+    <notes>Photograph (Shell No. 3). No theory data; caption only per instruction.</notes>
+  </figure>
+
+  <figure id="FIG-005" paper_number="Fig. 5" source_image="IMG-021" batch_id="E" confidence="HIGH" data_analyzed="false">
+    <caption>Comparison of theory (general reinforced shell) with experiment (Shell No. 1).</caption>
+    <labels>Axes: Frequency (kHz) vs Number of Circumferential Waves n; legend keyed by number of meridional half-waves (theory line vs experiment markers).</labels>
+    <notes>Frequency-comparison plot. Per user directive, plotted values NOT digitized/analyzed.</notes>
+  </figure>
+
+  <figure id="FIG-007" paper_number="Fig. 7" source_image="IMG-022" batch_id="E" confidence="HIGH" data_analyzed="false">
+    <caption>Comparison of theory (general reinforced shell) with experiment (Shell No. 2).</caption>
+    <notes>Left plot on IMG-022. Not digitized.</notes>
+  </figure>
+
+  <figure id="FIG-009" paper_number="Fig. 9" source_image="IMG-022" batch_id="E" confidence="HIGH" data_analyzed="false">
+    <caption>Comparison of theory (general reinforced shell) with experiment (Shell No. 3).</caption>
+    <notes>Right plot on IMG-022. Not digitized.</notes>
+  </figure>
+
+  <figure id="FIG-011" paper_number="Fig. 11" source_image="IMG-023" batch_id="E" confidence="HIGH" data_analyzed="false">
+    <caption>Example of nodal pattern for mode of vibration.</caption>
+    <labels>Developed sector map; dashed = node line; X = shaker location (NOT eigenvalue X, conflict NC004); r = ring, st = stringer; annotated Shell 1, m = 1 or 2, n = 7 or 6, f = 3514 cps.</labels>
+  </figure>
+
+  <figure id="FIG-012" paper_number="Fig. 12" source_image="IMG-025" batch_id="E" confidence="HIGH" data_analyzed="false">
+    <caption>Example of nodal pattern for mode of vibration.</caption>
+    <labels>Developed sector map; dashed = node line; X = shaker location; r = ring, st = stringer; annotated Shell 3, m = 1, n = 9, f = 5090 cps.</labels>
+  </figure>
+
+  <missing id="MISS-001" type="MISSING_FIGURES" severity="LOW" source_image="IMG-024" batch_id="E">
+    <what>Figures 6, 8, 10 (equivalent-orthotropic comparison plots for Shells 1, 2, 3) are referenced in text but not present in the image set.</what>
+    <impact>None for theory extraction (plots, not equations). Recorded for completeness; per user directive these are not required.</impact>
+  </missing>
+
+  <!-- ============================================================ -->
+  <!-- APPENDIX A. Components in the Frequency Matrix of Eq. 28      -->
+  <!-- ============================================================ -->
+
+  <text id="TXT-APPENDIX-HEAD" source_image="IMG-026" batch_id="F" type="appendix-heading" confidence="HIGH">
+    Appendix A. Components in the Frequency Matrix of Eq. 28. The H_i (i=1..9) below are expressed via the
+    integral/summation shorthand quantities IN1..IN16 (and their starred variants IN*1..IN*16). Starred
+    quantities take values per the chosen approach (see N-003).
+  </text>
+
+  <equation id="EQ-A01" paper_number="(A1)" source_image="IMG-026" batch_id="F" confidence="HIGH" type="frequency-matrix-component">
+    <eq>
+H_1 = D_w\frac{\pi}{\cos\alpha}(IN8)n^2 + D_r^{*}\frac{\pi}{\cos\alpha}(IN^{*}8)n^2 + \frac{(1-\nu_w)}{2}D_w\pi\cos\alpha\big[(IN8)+2k_m(IN14)+k_m^2(IN4)\big]
++ S_r^{*}\frac{2\pi\sin\alpha}{\cos^2\alpha}(IN^{*}7)n^2 + K_w\frac{\pi\sin^2\alpha}{\cos^3\alpha}(IN6)n^2 + K_r^{*}\frac{\pi\sin^2\alpha}{\cos^3\alpha}(IN^{*}6)n^2
++ \frac{(1-\nu_w)}{2}K_w\frac{\pi k_m^2\sin^2\alpha}{\cos\alpha}(IN2) + T_{st}^{*}\frac{k_m^2\sin^2\alpha}{\cos\alpha}(IN1)(IN^{*}16)
+    </eq>
+    <notes>H_1. cos exponents verified line-by-line: terms 1-2 /cos a; S_r* term /cos^2 a; K_w,K_r* terms /cos^3 a; last two /cos a. Starred terms exact.</notes>
+  </equation>
+
+  <equation id="EQ-A02" paper_number="(A2)" source_image="IMG-026" batch_id="F" confidence="HIGH" type="frequency-matrix-component">
+    <eq>
+H_2 = -D_w\pi(IN13)n - D_r^{*}\pi(IN^{*}13)n - \nu_w D_w\pi\big[2(IN13)-k_m(IN9)\big]n
++ \frac{(1-\nu_w)}{2}D_w\pi\big[(IN13)+k_m(IN3)\big]n - S_r^{*}\frac{\pi\sin\alpha}{\cos\alpha}(IN^{*}12)n
+    </eq>
+    <notes>H_2. All four leading signs verified (-,-,-,+ then -). Linear in n.</notes>
+  </equation>
+
+  <equation id="EQ-A03" paper_number="(A3)" source_image="IMG-026" batch_id="F" confidence="HIGH" type="frequency-matrix-component">
+    <eq>
+H_3 = -D_w\frac{\pi\sin\alpha}{\cos\alpha}(IN8)n - D_r^{*}\frac{\pi\sin\alpha}{\cos\alpha}(IN^{*}8)n + S_r^{*}\pi\Big[(IN^{*}7)\Big(2-\frac{n^2+\sin^2\alpha}{\cos^2\alpha}\Big)+k_m(IN^{*}13)\Big]n
++ K_w\frac{\pi\sin\alpha}{\cos\alpha}\Big[(IN6)\Big(2-\frac{n^2}{\cos^2\alpha}\Big)+k_m(IN12)\Big]n + K_r^{*}\frac{\pi\sin\alpha}{\cos\alpha}\Big[(IN^{*}6)\Big(2-\frac{n^2}{\cos^2\alpha}\Big)+k_m(IN^{*}12)\Big]n
++ \nu_w K_w\frac{\pi\sin\alpha}{\cos\alpha}\big[2(IN6)+4k_m(IN12)-k_m^2(IN8)\big]n - \frac{(1-\nu_w)}{2}K_w\frac{2k_m\sin\alpha}{\cos\alpha}\big[(IN12)+k_m(IN2)\big]n - T_{st}^{*}\frac{k_m^2\sin\alpha}{\cos\alpha}(IN1)(IN^{*}16)n
+    </eq>
+    <notes>H_3. Note the S_r* bracket uses (2 - (n^2+sin^2 a)/cos^2 a) whereas the K_w/K_r* brackets use (2 - n^2/cos^2 a). Last three lines verified from IMG-026 lower region; see AMB-004 for one denominator-power check.</notes>
+  </equation>
+
+  <ambiguity id="AMB-004" source_image="IMG-026" batch_id="F" severity="LOW" status="OPEN">
+    <location>Eq. (A3), the nu_w K_w term and the (1-nu_w)/2 K_w term (third-from-last and second-from-last lines).</location>
+    <problem>These two lines sit at the page foot just above H_4; the sin(alpha)/cos(alpha) prefactor power and the "2 k_m sin a / cos a" coefficient were read at moderate zoom and could carry a small mis-read in the cos-power or the leading numeric (2 vs other).</problem>
+    <possible_readings>As transcribed: nu_w K_w (pi sin a/cos a)[2(IN6)+4k_m(IN12)-k_m^2(IN8)]n and -(1-nu_w)/2 K_w (2 k_m sin a/cos a)[(IN12)+k_m(IN2)]n.</possible_readings>
+    <needed_resolution>Stage 3 blind re-zoom of IMG-026 foot lines to confirm cos powers and the 2k_m coefficient.</needed_resolution>
+  </ambiguity>
+
+  <equation id="EQ-A04" paper_number="(A4)" source_image="IMG-026" batch_id="F" corroborating_source="IMG-026B" confidence="HIGH" type="frequency-matrix-component">
+    <eq>
+H_4 = D_w\pi\cos\alpha(IN2) + D_r^{*}\pi\cos\alpha(IN^{*}2) + D_w\pi\cos\alpha\big[4(IN2)-4k_m(IN14)+k_m^2(IN10)\big]
++ D_{st}^{*}\cos\alpha\big[4(IN1)-4k_m(IN13)+k_m^2(IN9)\big](IN^{*}16) + \nu_w D_w\,2\pi\cos\alpha\big[2(IN2)-k_m(IN14)\big]
++ \frac{(1-\nu_w)}{2}D_w\frac{\pi}{\cos\alpha}(IN2)n^2
+    </eq>
+    <notes>H_4. SOURCED FROM TWO IMAGES THAT AGREE VERBATIM: the bottom of original IMG-026 and the user-supplied IMG-026B. (Resolves the Stage-1 MF-001 false alarm - see N-001.)</notes>
+  </equation>
+
+  <equation id="EQ-A05" paper_number="(A5)" source_image="IMG-027" batch_id="F" corroborating_source="IMG-026B" confidence="HIGH" type="frequency-matrix-component">
+    <eq>
+H_5 = D_w\pi\sin\alpha(IN13) + D_r^{*}\pi\sin\alpha(IN^{*}13) + \nu_w D_w\pi\sin\alpha\big[2(IN13)-k_m(IN9)\big]
+- S_r^{*}\pi\cos\alpha\Big[(IN^{*}12)\Big(2-\frac{n^2}{\cos^2\alpha}\Big)+k_m(IN^{*}2)\Big] - S_{st}^{*}\cos\alpha\big\{4(IN11)+k_m\big[8(IN1)-2(IN7)\big]-6k_m^2(IN13)+k_m^3(IN9)\big\}(IN^{*}15)
+    </eq>
+    <notes>H_5. SOURCED FROM TWO IMAGES THAT AGREE VERBATIM: IMG-027 (top) and user-supplied IMG-026B (bottom). Note the k_m^3(IN9) cubic term and the {...}(IN*15) grouping.</notes>
+  </equation>
+
+  <equation id="EQ-A06" paper_number="(A6)" source_image="IMG-027" batch_id="F" confidence="MEDIUM" type="frequency-matrix-component">
+    <eq>
+H_6 = D_w\frac{\pi\sin^2\alpha}{\cos^2\alpha}(IN8) + D_r^{*}\frac{\pi\sin^2\alpha}{\cos^2\alpha}(IN^{*}8) - S_r^{*}\,2\pi\sin\alpha\Big[(IN^{*}7)\Big(2-\frac{n^2}{\cos^2\alpha}\Big)+k_m(IN^{*}13)\Big]
++ K_w\pi\cos\alpha\Big[(IN6)\Big(2-\frac{n^2}{\cos^2\alpha}\Big)^2+2k_m(IN12)\Big(2-\frac{n^2}{\cos^2\alpha}\Big)+k_m^2(IN2)\Big]
++ K_r^{*}\pi\cos\alpha\Big[(IN^{*}6)\Big(2-\frac{n^2}{\cos^2\alpha}\Big)^2+2k_m(IN^{*}12)\Big(2-\frac{n^2}{\cos^2\alpha}\Big)+k_m^2(IN^{*}2)\Big]
++ K_w\pi\cos\alpha\big\{4(IN6)+16k_m(IN12)-4k_m^2\big[(IN8)-4(IN2)\big]-8k_m^3(IN14)+k_m^4(IN10)\big\}
++ K_{st}^{*}\cos\alpha\big\{4(IN5)+16k_m(IN11)-4k_m^2\big[(IN7)-4(IN1)\big]-8k_m^3(IN13)+k_m^4(IN9)\big\}(IN^{*}15) + \nu_w K_w\,2\pi\cos\alpha
+\times\big\{\big[2(IN6)+4k_m(IN12)-k_m^2(IN8)\big]\Big(2-\frac{n^2}{\cos^2\alpha}\Big)+2k_m(IN12)+4k_m^2(IN2)-k_m^3(IN14)\big\}
++ \frac{(1-\nu_w)}{2}K_w\frac{4\pi}{\cos\alpha}\big[(IN6)+2k_m(IN12)+k_m^2(IN2)\big]n^2 + T_r^{*}\frac{\pi}{\cos\alpha}\big[4(IN^{*}6)+4k_m(IN^{*}12)+k_m^2(IN^{*}2)\big]n^2
++ T_{st}^{*}\frac{k_m^2}{\cos\alpha}(IN1)(IN^{*}16)n^2
+    </eq>
+    <notes>H_6 (longest component). Verified at high zoom: squared brackets (2 - n^2/cos^2 a)^2 in the K_w and K_r* lines; k_m^4 top exponents in the two brace-groups; the nu_w K_w cross-multiplied brace. Confidence MEDIUM overall only because of the term count/density; no specific sub-term currently reads as wrong. See AMB-005.</notes>
+  </equation>
+
+  <ambiguity id="AMB-005" source_image="IMG-027" batch_id="F" severity="MEDIUM" status="OPEN">
+    <location>Eq. (A6), H_6 - the two large brace-groups (K_w{...} and K_st*{...}) and the nu_w K_w cross-product brace.</location>
+    <problem>Extremely dense; while each visible symbol was read, the sheer number of nested signs/exponents (k_m^2,k_m^3,k_m^4; the -4k_m^2[(IN8)-4(IN2)] inner bracket; the cross-multiplied (2 - n^2/cos^2 a)) warrants an independent second read.</problem>
+    <possible_readings>As transcribed above.</possible_readings>
+    <needed_resolution>Stage 3 blind audit to re-zoom each line of H_6 on IMG-027 and confirm every exponent/sign, especially the inner bracket -4k_m^2[(IN8)-4(IN2)] and the trailing +4k_m^2(IN2)-k_m^3(IN14) in the nu_w K_w brace.</needed_resolution>
+  </ambiguity>
+
+  <equation id="EQ-A07" paper_number="(A7)" source_image="IMG-028" batch_id="F" confidence="HIGH" type="frequency-matrix-mass-component">
+    <eq>H_7 = m_w\pi\cos\alpha(IN10) + m_r^{*}\pi\cos\alpha(IN^{*}10) + m_{st}^{*}\cos\alpha(IN9)(IN^{*}16)</eq>
+    <notes>H_7. Ends in (IN9)(IN*16).</notes>
+  </equation>
+
+  <equation id="EQ-A08" paper_number="(A8)" source_image="IMG-028" batch_id="F" confidence="HIGH" type="frequency-matrix-mass-component">
+    <eq>H_8 = m_w\pi\cos\alpha(IN4) + m_r^{*}\pi\cos\alpha(IN^{*}4) + m_{st}^{*}\cos\alpha(IN3)(IN^{*}15)</eq>
+    <notes>H_8. Ends in (IN3)(IN*15).</notes>
+  </equation>
+
+  <equation id="EQ-A09" paper_number="(A9)" source_image="IMG-028" batch_id="F" confidence="HIGH" type="frequency-matrix-mass-component">
+    <eq>H_9 = m_w\pi\cos\alpha(IN10) + m_r^{*}\pi\cos\alpha(IN^{*}10) + m_{st}^{*}\cos\alpha(IN9)(IN^{*}15)</eq>
+    <notes>H_9. Ends in (IN9)(IN*15). NB: H_7 and H_9 differ ONLY in the last factor (IN*16 vs IN*15) - verified.</notes>
+  </equation>
+
+  <text id="TXT-STARRED" source_image="IMG-029" batch_id="F" type="appendix-framing" confidence="HIGH">
+    "In these equations, the proper values must be substituted for the starred (*) terms in the coefficient
+    equations, depending upon which of the two approaches is used. For the equivalent orthotropic shell, the
+    values of D_r, S_r, K_r, T_r, m_r used in the components of Eq. 28 (as defined above) are given in
+    Eqs. 15 and 19; however, for this case the stringer properties are now" [Eq. A10].
+  </text>
+
+  <equation id="EQ-A10" paper_number="(A10)" source_image="IMG-029" batch_id="F" confidence="HIGH" type="stringer-properties-equivalent-orthotropic">
+    <eq>
+\begin{aligned}
+D_{st} &amp;= E_{st}A_{st}/((\cos\alpha)\beta),\\
+S_{st} &amp;= E_{st}A_{st}c_{st}/((\cos\alpha)\beta),\\
+K_{st} &amp;= E_{st}(I_{st}+A_{st}c_{st}^2)/((\cos\alpha)\beta),\\
+T_{st} &amp;= G_{st}J_{st}/((\cos\alpha)\beta),\\
+m_{st} &amp;= \gamma_{st}A_{st}/(g\beta\cos\alpha).
+\end{aligned}
+    </eq>
+    <notes>Stringer properties for the equivalent orthotropic shell. Denominator is (cos a) beta = beta cos(alpha), WITHOUT an explicit s factor (contrast Eq.15 where b_st = s beta cos a). See SUSP-002 (deferred to Stage 5; transcribed faithfully, not "corrected").</notes>
+  </equation>
+
+  <text id="TXT-IN-EQUIV-HEAD" source_image="IMG-029" batch_id="F" type="appendix-framing" confidence="HIGH">
+    "The values of (IN1)-(IN16) for the equivalent orthotropic shell are" [Eq. A11 block follows].
+    (The block is labeled (A11) per IMG-030's back-reference "obtained from Eqs. A11".)
+  </text>
+
+  <equation id="EQ-A11" paper_number="(A11)" source_image="IMG-029" batch_id="F" confidence="HIGH" type="IN-definitions-equivalent-orthotropic">
+    <eq>
+\begin{aligned}
+(IN1) &amp;= \tfrac{1}{6}(s_2^3-s_1^3) + (\tfrac{1}{4}k_m^2)(s_2-s_1),\\
+(IN2) &amp;= \tfrac{1}{8}(s_2^4-s_1^4) + (\tfrac{3}{8}k_m^2)(s_2^2-s_1^2),\\
+(IN3) &amp;= \tfrac{1}{10}(s_2^5-s_1^5) + (\tfrac{1}{2}k_m^2)(s_2^3-s_1^3) - (\tfrac{3}{4}k_m^4)(s_2-s_1),\\
+(IN4) &amp;= \tfrac{1}{12}(s_2^6-s_1^6) + (\tfrac{5}{8}k_m^2)(s_2^4-s_1^4) - (\tfrac{15}{8}k_m^4)(s_2^2-s_1^2),\\
+(IN5) &amp;= \tfrac{1}{2}(s_2-s_1),\\
+(IN6) &amp;= \tfrac{1}{4}(s_2^2-s_1^2),\\
+(IN7) &amp;= \tfrac{1}{6}(s_2^3-s_1^3) - (\tfrac{1}{4}k_m^2)(s_2-s_1),\\
+(IN8) &amp;= \tfrac{1}{8}(s_2^4-s_1^4) - (\tfrac{3}{8}k_m^2)(s_2^2-s_1^2),\\
+(IN9) &amp;= \tfrac{1}{10}(s_2^5-s_1^5) - (\tfrac{1}{2}k_m^2)(s_2^3-s_1^3) + (\tfrac{3}{4}k_m^4)(s_2-s_1),\\
+(IN10) &amp;= \tfrac{1}{12}(s_2^6-s_1^6) - (\tfrac{5}{8}k_m^2)(s_2^4-s_1^4) + (\tfrac{15}{8}k_m^4)(s_2^2-s_1^2),\\
+(IN11) &amp;= -(\tfrac{1}{4}k_m)(s_2-s_1),\\
+(IN12) &amp;= -(\tfrac{1}{4}k_m)(s_2^2-s_1^2),\\
+(IN13) &amp;= -(\tfrac{1}{4}k_m)(s_2^3-s_1^3) + (\tfrac{3}{8}k_m^3)(s_2-s_1),\\
+(IN14) &amp;= -(\tfrac{1}{4}k_m)(s_2^4-s_1^4) + (\tfrac{3}{4}k_m^3)(s_2^2-s_1^2),\\
+(IN15) &amp;= \pi.
+\end{aligned}
+    </eq>
+    <notes>Equivalent-orthotropic IN definitions. IN1-IN4 (with + sign on the k_m terms for IN3/IN4) vs IN7-IN10
+    (with - sign and +k_m^4) are the matched cos/sin-pair integrals. k_m^4 exponents in IN3,IN4,IN9,IN10
+    verified at high zoom. (IN16) for this case is NOT visible - see MISS-002.</notes>
+  </equation>
+
+  <missing id="MISS-002" type="MISSING_EQUATION_LINE" severity="MEDIUM" source_image="IMG-029,IMG-030" batch_id="F">
+    <what>The equivalent-orthotropic definition of (IN16) is not visible. IMG-029 ends at "(IN15) = pi," followed by "and"; IMG-030 then jumps to the GENERAL case ("For the general case ..."). The single line "(IN16) = ..." for the equivalent orthotropic shell falls in the un-imaged gap.</what>
+    <most_probable_value>By the pattern (IN15 = pi is the circumferential integral of sin^2/cos^2 n*theta over 0..2pi), (IN16) = pi is strongly implied for the equivalent orthotropic shell - but this is NOT asserted as extracted; it is flagged for resolution.</most_probable_value>
+    <impact>(IN16) appears in H_1, H_4, H_6, H_7, H_9. A missing equivalent-orthotropic value would block that approach's implementation; the general-case (IN16) IS given in Eq. A12.</impact>
+    <needed_resolution>User to supply the IMG-029->IMG-030 gap line, or confirm (IN16) = pi for the equivalent orthotropic shell.</needed_resolution>
+  </missing>
+
+  <text id="TXT-IN-GENERAL-HEAD" source_image="IMG-030" batch_id="F" type="appendix-framing" confidence="HIGH">
+    "For the general case of reinforced conical shells, the stiffener properties are given by Eqs. 17 and 21,
+    and the values of IN1-IN16 are obtained from Eqs. A11 with the following exceptions, for the starred
+    terms" [Eq. A12 list]. (I.e. for the GENERAL approach, the non-starred IN keep their A11 polynomial
+    forms; the STARRED terms IN*2, IN*4, IN*6, IN*7, IN*8, IN*10, IN*12, IN*13, IN*15, IN*16 take the
+    summation forms below.)
+  </text>
+
+  <equation id="EQ-A12" paper_number="(A12)" source_image="IMG-030" batch_id="F" confidence="HIGH" type="IN-definitions-general-reinforced">
+    <eq>
+\begin{aligned}
+(IN2) &amp;= \sum_{r=1}^{P} s_r^3 \cos^2 k_m(s_r-s_1),\\
+(IN4) &amp;= \sum_{r=1}^{P} s_r^5 \cos^2 k_m(s_r-s_1),\\
+(IN6) &amp;= \sum_{r=1}^{P} s_r \sin^2 k_m(s_r-s_1),\\
+(IN7) &amp;= \sum_{r=1}^{P} s_r^2 \sin^2 k_m(s_r-s_1),\\
+(IN8) &amp;= \sum_{r=1}^{P} s_r^3 \sin^2 k_m(s_r-s_1),\\
+(IN10) &amp;= \sum_{r=1}^{P} s_r^5 \sin^2 k_m(s_r-s_1),\\
+(IN12) &amp;= \sum_{r=1}^{P} s_r^2 \sin k_m(s_r-s_1)\cos k_m(s_r-s_1),\\
+(IN13) &amp;= \sum_{r=1}^{P} s_r^3 \sin k_m(s_r-s_1)\cos k_m(s_r-s_1),\\
+(IN15) &amp;= \sum_{st=1}^{Q} \sin^2 n\theta_{st} \quad\text{or}\quad (IN15) = \sum_{st=1}^{Q} \cos^2 n\theta_{st},\\
+(IN16) &amp;= \sum_{st=1}^{Q} \cos^2 n\theta_{st} \quad\text{or}\quad (IN16) = \sum_{st=1}^{Q} \sin^2 n\theta_{st},
+\end{aligned}
+    </eq>
+    <notes>General reinforced-shell exception values for the starred IN terms (ring sums over r=1..P; stringer
+    sums over st=1..Q). The "or" pairs for IN15/IN16 let the analyst orient stringers on nodes vs antinodes
+    (theta_1 = 0). Labels printed as (IN2)... but per the heading these define the starred terms IN*2 etc.
+    (see AMB-006). The non-listed IN (1,3,5,9,11,14) retain their A11 polynomial forms.</notes>
+  </equation>
+
+  <ambiguity id="AMB-006" source_image="IMG-030" batch_id="F" severity="LOW" status="OPEN">
+    <location>Eq. (A12) labels.</location>
+    <problem>The summation definitions are printed with unstarred labels "(IN2)", "(IN4)", ... yet the introducing sentence says they are the values "for the starred terms". So these define IN*2, IN*4, ... in the GENERAL approach, while the same H-formulas also contain unstarred IN2, IN4, ... (which keep A11 forms). The star/no-star bookkeeping is implicit, not typographically explicit, in this list.</problem>
+    <possible_readings>(a) These ARE the starred-term (IN*k) values for the general case (most consistent with the heading "for the starred terms"); (b) literal unstarred reading (less consistent). Reading (a) is strongly preferred by context.</possible_readings>
+    <needed_resolution>Stage 5 to fix the convention: in the general approach, starred IN*k = the A12 summation forms; unstarred INk = the A11 polynomial forms. Confirm no H-formula intends an unstarred INk to take a summation form.</needed_resolution>
+  </ambiguity>
+
+  <text id="TXT-APPENDIX-CLOSE" source_image="IMG-030" batch_id="F" type="modeling-assumptions" confidence="HIGH">
+    Closing appendix text (key global assumptions): "where theta_1 = 0. In this way, it is possible to orient
+    the stringers on the shell with respect to nodes and antinodes, thereby changing the values of strain and
+    kinetic energies and the resonant frequency for a particular nodal pattern. In Eqs. A1-A8, it is assumed
+    that all rings have the same material and cross-sectional properties and all stringers have the same
+    material and cross-sectional properties; however, the materials of the shell, rings, and stringers may be
+    different. Rotatory inertia, transverse shear, and structural damping are neglected."
+    <modeling_assumptions>
+      (a) theta_1 = 0 (first stringer reference angle);
+      (b) all rings identical (material + section); all stringers identical (material + section); shell/ring/stringer materials may differ;
+      (c) NEGLECTED: rotatory inertia, transverse shear, structural damping.
+    </modeling_assumptions>
+  </text>
+
+  <!-- ============================================================ -->
+  <!-- PRELIMINARY SUSPECTED ISSUES (final classification = Stage 5) -->
+  <!-- ============================================================ -->
+
+  <suspected_issue id="SUSP-001" source_image="IMG-009,IMG-010" batch_id="B" severity="LOW" status="PRELIMINARY">
+    <location>Eq.(14) and Eq.(16) wall strain-energy bracket: membrane shear term coefficient vs bending twist term coefficient.</location>
+    <observation>The membrane part carries (1/2)(1-nu_w) on epsilon_bar_{s theta}^2, while the bending part carries 2(1-nu_w) on chi_{s theta}^2. This 1/2-vs-2 asymmetry is notable.</observation>
+    <why_it_may_matter>If both were meant to represent the same (1-nu_w)-type shear/twist energy weighting, one coefficient could be a typo. However, it can also be CORRECT given the factor-2 in Eq.(3) (wall shear strain uses -2 z chi_{s theta}) and the standard plate energy bookkeeping where the twist energy naturally carries a different numeric factor.</why_it_may_matter>
+    <most_defensible_interpretation>Transcription is faithful to the page; likely intentional and consistent with Eq.(3)'s factor 2. Defer to Stage 5 dimensional/energy check; do NOT alter.</most_defensible_interpretation>
+  </suspected_issue>
+
+  <suspected_issue id="SUSP-002" source_image="IMG-029" batch_id="F" severity="MEDIUM" status="PRELIMINARY">
+    <location>Eq.(A10) equivalent-orthotropic stringer properties denominator (cos a) beta, compared with Eq.(15) D_st = E_st A_st/b_st and b_st = s beta cos a (Eq. U01).</location>
+    <observation>Eq.(15) smears stringer stiffness over spacing b_st = s*beta*cos(alpha) (s-dependent). Eq.(A10) writes the same properties over (cos a)*beta (NO explicit s). The two are inconsistent unless an s factor is absorbed elsewhere (e.g. via the s-weighting inside the IN integrals or a deliberate redefinition for the Eq.28 components).</observation>
+    <why_it_may_matter>An accidental dropped s would change the dimensional scaling of the smeared stringer terms and hence the predicted frequencies.</why_it_may_matter>
+    <most_defensible_interpretation>Transcribed faithfully as (cos a) beta. Likely the s-dependence is handled by the s-power IN integrals so the per-unit-area smearing here is by the angular spacing beta*cos(alpha) at the local radius - but this must be reconciled in Stage 5. Do NOT "fix".</most_defensible_interpretation>
+  </suspected_issue>
+
+  <!-- ============================================================ -->
+  <!-- COVERAGE SUMMARY                                              -->
+  <!-- ============================================================ -->
+
+  <coverage_summary>
+    <numbered_equations>(1)-(33) all extracted (HIGH, except Eq.13 MEDIUM/AMB-001).</numbered_equations>
+    <appendix_equations>(A1)-(A12) all extracted. A1-A5,A7-A9 HIGH; A6 MEDIUM/AMB-005; A4/A5 double-sourced.</appendix_equations>
+    <unnumbered_equations>b_st = s beta cos a (EQ-U01) extracted.</unnumbered_equations>
+    <tables>Table I (TBL-I) and Table II (TBL-II) fully extracted.</tables>
+    <figures>Fig.1-5,7,9,11,12 captured (captions/labels). Plots not digitized per directive. Fig.6,8,10 absent (MISS-001).</figures>
+    <definitions>Full List of Symbols (DEF-SYMBOLS) and rigidity/mass/IN definitions extracted.</definitions>
+    <assumptions>Linear shell theory; thin stiffeners (joint interactions ignored); simply-supported ends; identical rings / identical stringers; rotatory inertia, transverse shear, structural damping neglected; theta_1=0.</assumptions>
+    <open_ambiguities>AMB-001..AMB-006.</open_ambiguities>
+    <missing_items>MISS-001 (Figs 6/8/10), MISS-002 (equivalent-orthotropic IN16 line).</missing_items>
+    <preliminary_suspected_issues>SUSP-001 (1/2-vs-2 shear/twist coefficient), SUSP-002 (A10 missing s in denominator).</preliminary_suspected_issues>
+    <prohibitions_honored>No CSV used; no code written; plots not digitized; nothing guessed/silently corrected.</prohibitions_honored>
+  </coverage_summary>
+
+</extraction>
